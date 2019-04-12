@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	const float frameDelay = 1000.0f / FPS;
 
 	Uint64 frameStart;
-	float frameTime;SDL
+	float frameTime;
 
 	game = new Game();
 
