@@ -157,6 +157,7 @@
     <ClCompile Include="TextureManager.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tileset.cpp" />
+    <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -167,6 +168,7 @@
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tileset.h" />
+    <ClInclude Include="tinyxml2.h" />
     <ClInclude Include="Velocity.h" />
   </ItemGroup>
   <ItemGroup>

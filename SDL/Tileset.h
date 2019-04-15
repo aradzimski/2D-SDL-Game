@@ -1,12 +1,13 @@
 #pragma once
 #include <vector>
+#include <string>
 #include "Tile.h"
 
 class Tileset {
 
 public:
 
-	Tileset(const char* spritesheet);
+	Tileset(std::string spritesheet);
 	~Tileset();
 
 	static int TILE_SIZE;

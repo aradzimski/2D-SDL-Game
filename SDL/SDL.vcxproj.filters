@@ -19,6 +19,12 @@
     <Filter Include="Pliki nagłówkowe\Engine">
       <UniqueIdentifier>{78d77b74-b456-43ca-9d67-ba7498e038d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Pliki źródłowe\Libs">
+      <UniqueIdentifier>{2da82af8-6cb5-4462-ab85-29fc9baf5df8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pliki nagłówkowe\Libs">
+      <UniqueIdentifier>{01838667-513f-4598-9b3f-7e8b1d450f45}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="tinyxml2.cpp">
+      <Filter>Pliki źródłowe\Libs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -70,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="Tileset.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="tinyxml2.h">
+      <Filter>Pliki nagłówkowe\Libs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
