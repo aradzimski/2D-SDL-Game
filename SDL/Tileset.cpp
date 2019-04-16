@@ -17,19 +17,19 @@ Tileset::Tileset(std::string spritesheet)
 
 	// Dla ka¿dego bloku (domyœlnie 64x64) w importowanym obrazku tworzymy nowy obiekt Tile i przypisujemy mu teksturê.
 
-	for (int col = 1; col <= spritesheetColumns; col++)
+	for (int row = 1; row <= spritesheetRows; row++)
 	{
-		cropY = 0;
-		for (int row = 1; row <= spritesheetRows; row++)
+		cropX= 0;
+		for (int col = 1; col <= spritesheetColumns; col++)
 		{
 			tempTileSurface = TextureManager::CropSurface(tempSurface, cropX, cropY);
 			tileTexture = TextureManager::LoadTileTexture(tempTileSurface);
 			Tile tmpTile(tileTexture, tileID);
 			vTiles.push_back ( tmpTile );
-			cropY += TILE_SIZE;
+			cropX += TILE_SIZE;
 			tileID++;
 		}
-		cropX += TILE_SIZE;
+		cropY += TILE_SIZE;
 	}
 }
 
