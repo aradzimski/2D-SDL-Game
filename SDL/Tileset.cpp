@@ -24,8 +24,8 @@ Tileset::Tileset(std::string spritesheet)
 		{
 			tempTileSurface = TextureManager::CropSurface(tempSurface, cropX, cropY);
 			tileTexture = TextureManager::LoadTileTexture(tempTileSurface);
-			Tile tmpTile(tileTexture, tileID);
-			vTiles.push_back ( tmpTile );
+			Sprite tmpSprite(tileTexture, tileID);
+			Sprites.push_back ( tmpSprite );
 			cropX += TILE_SIZE;
 			tileID++;
 		}

@@ -48,11 +48,14 @@
     <ClCompile Include="Tileset.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Pliki źródłowe\Engine</Filter>
-    </ClCompile>
     <ClCompile Include="tinyxml2.cpp">
       <Filter>Pliki źródłowe\Libs</Filter>
+    </ClCompile>
+    <ClCompile Include="Sprite.cpp">
+      <Filter>Pliki źródłowe\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,14 +77,20 @@
     <ClInclude Include="resource.h">
       <Filter>Pliki nagłówkowe</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Pliki nagłówkowe\Engine</Filter>
-    </ClInclude>
     <ClInclude Include="Tileset.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
     <ClInclude Include="tinyxml2.h">
       <Filter>Pliki nagłówkowe\Libs</Filter>
+    </ClInclude>
+    <ClInclude Include="Animation.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Sprite.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

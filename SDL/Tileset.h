@@ -1,7 +1,8 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "Tile.h"
+#include "TextureManager.h"
+#include "Sprite.h"
 
 class Tileset {
 
@@ -11,7 +12,7 @@ public:
 	~Tileset();
 
 	static int TILE_SIZE;
-	std::vector<class Tile> vTiles;
+	std::vector<class Sprite> Sprites;
 
 private:
 

@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Tile.h"
 #include <string>
 
 Map::Map()
@@ -39,16 +40,6 @@ Map::Map()
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
 
-	src.x = src.y = 0;
-	src.w = dest.w = Tileset::TILE_SIZE;
-	src.h = dest.h = Tileset::TILE_SIZE;
-	dest.x = dest.y = 0;
-}
-
-void Map::DrawMap()
-{
-	//parsujemy
-
 	int type = 0;
 	for (int row = 0; row < size_y; row++)
 	{
@@ -56,11 +47,17 @@ void Map::DrawMap()
 		{
 			type = map[row][column];
 
-			dest.x = column * Tileset::TILE_SIZE;
-			dest.y = row * Tileset::TILE_SIZE;
-
-			SDL_Rect drawingRect = { dest.x - Game::camera.x, dest.y - Game::camera.y, dest.w, dest.h };
-			tileset->vTiles[type].DrawTile(src, drawingRect);
+			Tile* tile = new Tile(tileset, type, row, column);
+			Tiles.push_back(tile);
 		}
 	}
+}
+
+void Map::DrawMap()
+{
+	for (int i = 0; i < Tiles.size(); i++)
+	{
+		Tiles[i]->update();
+	}
+	
 }

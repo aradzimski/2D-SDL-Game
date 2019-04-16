@@ -110,7 +110,7 @@
     <Link>
       <AdditionalLibraryDirectories>C:\Users\Adrian\source\repos\SDL\SDLLib\SDL2_image-2.0.4\lib\x64;C:\Users\Adrian\source\repos\SDL\SDLLib\SDL2-2.0.9\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -155,17 +155,20 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="TextureManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tileset.cpp" />
     <ClCompile Include="tinyxml2.cpp" />
     <ClCompile Include="Velocity.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tileset.h" />
     <ClInclude Include="tinyxml2.h" />

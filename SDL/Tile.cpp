@@ -1,17 +1,68 @@
 #include "Tile.h"
 
-Tile::Tile(SDL_Texture* tTexture, int tID)
+Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool collision, bool animation)
 {
-	this->tTexture = tTexture;
-	this->tID = tID;
-	collision = false;
+	this->tileset = tileset;
+	this->collision = collision;
+	this->animation = animation;
+	this->column = column;
+	this->row = row;
+
+	srcRect.x = srcRect.y = 0;
+	srcRect.w = destRect.w = Tileset::TILE_SIZE;
+	srcRect.h = destRect.h = Tileset::TILE_SIZE;
+	destRect.x = destRect.y = 0;
+
+	texture = tileset->Sprites[tiletype].getTexture();
+
 }
 
-Tile::~Tile()
+bool Tile::getAnimation()
 {
+	return animation;
 }
 
-void Tile::DrawTile(SDL_Rect srcRect, SDL_Rect destRect)
+void Tile::setAnimation(bool animation)
 {
-	TextureManager::Draw(tTexture, srcRect, destRect);
+	this->animation = animation;
+}
+
+bool Tile::getCollision()
+{
+	return collision;
+}
+
+void Tile::setCollision(bool collision)
+{
+	this->collision = collision;
+}
+
+SDL_Rect Tile::getSourceRect()
+{
+	return srcRect;
+}
+
+void Tile::setSourceRect(SDL_Rect srcRect)
+{
+	this->srcRect = srcRect;
+}
+
+SDL_Rect Tile::getDestinationRect()
+{
+	return destRect;
+}
+
+void Tile::setDestinationRect(SDL_Rect destRect)
+{
+	this->destRect = destRect;
+}
+
+void Tile::update()
+{
+	destRect.x = column * Tileset::TILE_SIZE;
+	destRect.y = row * Tileset::TILE_SIZE;
+
+	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
+
+	TextureManager::Draw(texture, srcRect, drawingRect);
 }
