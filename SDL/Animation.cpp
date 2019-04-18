@@ -28,8 +28,6 @@ int Animation::getTileQuantity()
 
 SDL_Texture* Animation::getNextTile()
 {
-	delay_counter++;
-
 	if (delay_counter % (delay) == 0)
 	{
 		nextTile = tileset
@@ -38,6 +36,9 @@ SDL_Texture* Animation::getNextTile()
 
 		tile_counter++;
 	}
+
+	delay_counter++;
+
 	if (delay_counter == delay * 100000)
 	{
 		delay_counter = 0;
