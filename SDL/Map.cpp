@@ -1,10 +1,10 @@
 #include "Map.h"
 #include "Tile.h"
 #include <string>
-Map::Map()
+Map::Map(const char* path)
 {
 	// wczytujemy poziom razem z tilesetem z pliku mapy
-	doc.LoadFile("Assets/Maps/level1.map");
+	doc.LoadFile(path);
 	// Rozmiar mapy
 	size_x = doc
 		.FirstChildElement("map")

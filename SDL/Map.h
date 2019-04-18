@@ -8,7 +8,7 @@
 class Map 
 {
 public:
-	Map();
+	Map(const char* path);
 	~Map();
 	void DrawMap();
 

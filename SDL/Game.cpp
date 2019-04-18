@@ -51,7 +51,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 	}
 	
 	player = new Player("Assets/Sprites/Player.png", 64, 64);
-	map = new Map();
+	map = new Map("Assets/Maps/level1.map");
 };
 
 void Game::handleEvents()
