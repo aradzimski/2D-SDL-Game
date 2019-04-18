@@ -1,13 +1,14 @@
 #pragma once
-#include <vector>
 #include "TextureManager.h"
 #include "Tileset.h"
+#include "Animation.h"
 
 class Tile {
 	
 public:
 
-	Tile(Tileset* tileset, int tiletype, int column, int row, bool collision = false, bool animation = false);
+	Tile(Tileset* tileset, int tiletype, int column, int row, bool animation, Animation* a, bool collision = false);
+	Tile(Tileset* tileset, int tiletype, int column, int row, bool collision = false);
 	~Tile();
 
 	bool getAnimation();
@@ -31,11 +32,11 @@ private:
 	int row;
 
 	SDL_Texture* texture;
+	SDL_Texture* textureOrigin;
+	Animation* tAnimation;
 
 	SDL_Rect srcRect;
 	SDL_Rect destRect;
 
 	Tileset* tileset;
-	std::vector <int> AnimationTiles;
-
 };

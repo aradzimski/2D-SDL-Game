@@ -1,10 +1,28 @@
 #include "Tile.h"
 
-Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool collision, bool animation)
+Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool animation, Animation* a, bool collision)
 {
 	this->tileset = tileset;
 	this->collision = collision;
 	this->animation = animation;
+	this->column = column;
+	this->row = row; 
+	this->tAnimation = a;
+
+	srcRect.x = srcRect.y = 0;
+	srcRect.w = destRect.w = Tileset::TILE_SIZE;
+	srcRect.h = destRect.h = Tileset::TILE_SIZE;
+	destRect.x = destRect.y = 0;
+
+	texture = tileset->Sprites[tiletype].getTexture();
+	textureOrigin = tileset->Sprites[tiletype].getTexture();
+}
+
+Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool collision)
+{
+	this->tileset = tileset;
+	this->collision = collision;
+	this->animation = false;
 	this->column = column;
 	this->row = row;
 
@@ -63,6 +81,11 @@ void Tile::update()
 	destRect.y = row * Tileset::TILE_SIZE;
 
 	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
+
+	if (animation)
+	{
+		texture = tAnimation->getNextTile();
+	}
 
 	TextureManager::Draw(texture, srcRect, drawingRect);
 }

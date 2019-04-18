@@ -1,7 +1,6 @@
 #include "Map.h"
 #include "Tile.h"
 #include <string>
-
 Map::Map()
 {
 	// wczytujemy poziom razem z tilesetem z pliku mapy
@@ -41,14 +40,25 @@ Map::Map()
 	}
 
 	int type = 0;
-	for (int row = 0; row < size_y; row++)
+	for (int column = 0; column < size_x; column++)
 	{
-		for (int column = 0; column < size_x; column++)
+		for (int row = 0; row < size_y; row++)
 		{
-			type = map[row][column];
+			type = map[column][row];
 
-			Tile* tile = new Tile(tileset, type, row, column);
-			Tiles.push_back(tile);
+			if (type == 2)
+			{
+				Animation* aWater = new Animation(tileset, 60);
+				aWater->addTile(2); 
+				aWater->addTile(3);
+				Tile* tile = new Tile(tileset, type, row, column, true, aWater, true);
+				Tiles.push_back(tile);
+			}
+			else
+			{
+				Tile* tile = new Tile(tileset, type, row, column);
+				Tiles.push_back(tile);
+			}
 		}
 	}
 }

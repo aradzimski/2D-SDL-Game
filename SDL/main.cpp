@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 
 	game = new Game();
 
-	game->initialize("Smieszna gierka", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 2);
+	game->initialize("Smieszna gierka", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 0);
 
 	while (game->isRunning()) 
 	{

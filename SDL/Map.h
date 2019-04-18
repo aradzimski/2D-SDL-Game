@@ -1,6 +1,7 @@
 #pragma once 
 #include "Tileset.h"
 #include "TextureManager.h"
+#include "Animation.h"
 #include "tinyxml2.h"
 #include <vector>
 
@@ -18,6 +19,8 @@ private:
 	tinyxml2::XMLDocument doc;
 	std::vector<std::vector<int> > map;
 	std::vector<class Tile*> Tiles;
+
+	Animation* aWater;
 
 	int size_x;
 	int size_y;

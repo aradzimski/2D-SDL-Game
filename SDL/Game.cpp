@@ -64,6 +64,9 @@ void Game::handleEvents()
 	default:
 		break;
 	}
+	if (Game::event.type == SDL_KEYDOWN && Game::event.key.keysym.sym == SDLK_ESCAPE) {
+		running = false;
+	}
 };
 
 void Game::update()
