@@ -32,7 +32,6 @@ private:
 	int row;
 
 	SDL_Texture* texture;
-	SDL_Texture* textureOrigin;
 	Animation* tAnimation;
 
 	SDL_Rect srcRect;

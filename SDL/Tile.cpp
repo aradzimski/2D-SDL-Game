@@ -15,7 +15,6 @@ Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool animation, 
 	destRect.x = destRect.y = 0;
 
 	texture = tileset->Sprites[tiletype].getTexture();
-	textureOrigin = tileset->Sprites[tiletype].getTexture();
 }
 
 Tile::Tile(Tileset* tileset, int tiletype, int column, int row, bool collision)

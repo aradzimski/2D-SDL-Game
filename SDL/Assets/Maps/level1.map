@@ -1,6 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <map width="20" height="20">
  <tileset source="test.png"/>
+ <specialtiles>
+  <tile id="2" animation="true" delay="60" collision="true">
+   <animation tile="2"/>
+   <animation tile="3"/>
+   <animation tile="4"/>
+   <animation tile="5"/>
+  </tile>
+ </specialtiles>
  <layer>00000000000111111111</layer>
  <layer>00000000000011111111</layer>
  <layer>00000000000002111111</layer>
@@ -21,9 +28,4 @@
  <layer>00000000000000000011</layer>
  <layer>00000000000000000000</layer>
  <layer>00000000000000000000</layer>
- <animation delay=60>
-  <tile>2</tile>
-  <tile>3</tile>
- </animation>
 </map>
-</xml>

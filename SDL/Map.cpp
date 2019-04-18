@@ -4,9 +4,7 @@
 Map::Map()
 {
 	// wczytujemy poziom razem z tilesetem z pliku mapy
-
-	doc.LoadFile("Assets/Maps/level1.xml");
-	
+	doc.LoadFile("Assets/Maps/level1.map");
 	// Rozmiar mapy
 	size_x = doc
 		.FirstChildElement("map")
@@ -14,7 +12,6 @@ Map::Map()
 	size_y = doc
 		.FirstChildElement("map")
 		->IntAttribute("height");
-
 	// Tileset
 	std::string tilesetname = (char*)doc
 		.FirstChildElement("map")
@@ -38,23 +35,40 @@ Map::Map()
 		}
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
-
 	int type = 0;
 	for (int column = 0; column < size_x; column++)
 	{
 		for (int row = 0; row < size_y; row++)
 		{
+			ignoreFurtherCommands = false;
 			type = map[column][row];
 
-			if (type == 2)
+			// Pobieranie listy animacji i kolizji
+
+			for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("specialtiles")->FirstChildElement("tile"); child; child = child->NextSiblingElement("tile"))
 			{
-				Animation* aWater = new Animation(tileset, 60);
-				aWater->addTile(2); 
-				aWater->addTile(3);
-				Tile* tile = new Tile(tileset, type, row, column, true, aWater, true);
-				Tiles.push_back(tile);
+				tileID = child->IntAttribute("id");
+				animation = child->BoolAttribute("animation");
+				collision = child->BoolAttribute("collision");
+
+				if (animation)
+				{
+					animationDelay = child->IntAttribute("delay");
+					anim = new Animation(tileset, animationDelay);
+
+					for (tinyxml2::XMLElement* tileAnimation = child->FirstChildElement("animation"); tileAnimation; tileAnimation = tileAnimation->NextSiblingElement("animation"))
+					{
+						anim->addTile(tileAnimation->IntAttribute("tile"));
+					}
+				}
+				if (type == tileID)
+				{
+					Tile* tile = new Tile(tileset, type, row, column, animation, anim, collision);
+					Tiles.push_back(tile);
+					ignoreFurtherCommands = true;
+				}
 			}
-			else
+			if (true != ignoreFurtherCommands)
 			{
 				Tile* tile = new Tile(tileset, type, row, column);
 				Tiles.push_back(tile);

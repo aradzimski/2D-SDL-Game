@@ -20,7 +20,13 @@ private:
 	std::vector<std::vector<int> > map;
 	std::vector<class Tile*> Tiles;
 
-	Animation* aWater;
+	bool ignoreFurtherCommands;
+
+	Animation* anim = nullptr;
+	int tileID;
+	bool animation;
+	bool collision;
+	int animationDelay;
 
 	int size_x;
 	int size_y;
