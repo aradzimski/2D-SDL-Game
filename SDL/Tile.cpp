@@ -87,4 +87,5 @@ void Tile::update()
 	}
 
 	TextureManager::Draw(texture, srcRect, drawingRect);
+
 }

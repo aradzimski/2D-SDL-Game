@@ -6,7 +6,7 @@ SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 Player* player;
 Map* map;
-SDL_Rect Game::camera = { 0, 0, 5000, 5000};
+SDL_Rect Game::camera = { 0, 0, 12800, 12800};
 
 Game::Game()
 {
@@ -39,9 +39,9 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 			flags
 		);
 
-		renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
-		
+
 		running = true;
 	}
 
@@ -50,8 +50,10 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 		running = false;
 	}
 	
-	player = new Player("Assets/Sprites/Player.png", 64, 64);
+	player = new Player("Assets/Sprites/Player.png", 500, 500);
 	map = new Map("Assets/Maps/level1.map");
+	player->setMapSize(map->getSizeX(), map->getSizeY());
+	player->setCollidingTiles(map->getCollidingTiles());
 };
 
 void Game::handleEvents()

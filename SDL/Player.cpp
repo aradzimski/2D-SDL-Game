@@ -39,9 +39,9 @@ void Player::Update()
 		{
 			movRight = true;
 		}
-		
+
 	}
-	if (Game::event.type == SDL_KEYUP) 
+	if (Game::event.type == SDL_KEYUP)
 	{
 		if (Game::event.key.keysym.sym == SDLK_w)
 		{
@@ -60,7 +60,7 @@ void Player::Update()
 			movRight = false;
 		}
 	}
-    setVelocityFactor();
+	setVelocityFactor();
 	oVelocity->limitSpeed();
 
 	srcRect.h = oSize;
@@ -70,9 +70,41 @@ void Player::Update()
 
 	destRect.w = oSize;
 	destRect.h = oSize;
-	destRect.x = xpos = xpos + oVelocity->getVelocityX();
-	destRect.y = ypos = ypos + oVelocity->getVelocityY();
 
+	// Kolizja z krawêdziami mapy
+
+	if (xpos > 0 && xpos < map_size_x)
+	{
+		destRect.x = xpos = xpos + oVelocity->getVelocityX();
+	}
+	else if ((xpos == 0 && oVelocity->getVelocityX() > 0) || (xpos == map_size_x && oVelocity->getVelocityX() < 0))
+	{
+		destRect.x = xpos = xpos + oVelocity->getVelocityX();
+	}
+	else {
+		if(xpos < 0)
+		destRect.x = xpos = 0;
+		if(xpos > map_size_x)
+		destRect.x = xpos = map_size_x;
+
+		oVelocity->setVelocityX(0);
+	}
+	if (ypos > 0 && ypos < map_size_y)
+	{
+		destRect.y = ypos = ypos + oVelocity->getVelocityY();
+	}
+	else if ((ypos == 0 && oVelocity->getVelocityY() > 0) || ((ypos == map_size_y && oVelocity->getVelocityY() < 0)))
+	{
+		destRect.y = ypos = ypos + oVelocity->getVelocityY();
+	}
+	else {
+		if (ypos < 0)
+		destRect.y = ypos = 0;
+		if (ypos > map_size_y)
+	    destRect.y= ypos = map_size_y;
+
+		oVelocity->setVelocityY(0);
+	}
 }
 
 void Player::Render()
@@ -130,4 +162,15 @@ void Player::setPositionX(float xpos)
 void Player::setPositionY(float ypos)
 {
 	this->ypos = ypos;
+}
+
+void Player::setMapSize(int size_x, int size_y)
+{
+	map_size_x = size_x * Tileset::TILE_SIZE - Tileset::TILE_SIZE;
+	map_size_y = size_y * Tileset::TILE_SIZE - Tileset::TILE_SIZE;
+}
+
+void Player::setCollidingTiles(std::vector<class Tile*> tiles)
+{
+	CollidingTiles = tiles;
 }

@@ -1,6 +1,6 @@
 #include "Map.h"
-#include "Tile.h"
 #include <string>
+
 Map::Map(const char* path)
 {
 	// wczytujemy poziom razem z tilesetem z pliku mapy
@@ -64,6 +64,10 @@ Map::Map(const char* path)
 				if (type == tileID)
 				{
 					Tile* tile = new Tile(tileset, type, row, column, animation, anim, collision);
+					if (collision)
+					{
+						CollidingTiles.push_back(tile);
+					}
 					Tiles.push_back(tile);
 					ignoreFurtherCommands = true;
 				}
@@ -75,13 +79,28 @@ Map::Map(const char* path)
 			}
 		}
 	}
+	tiles_size = Tiles.size();
 }
 
 void Map::DrawMap()
 {
-	for (int i = 0; i < Tiles.size(); i++)
+	for (int i = 0; i < tiles_size; i++)
 	{
 		Tiles[i]->update();
 	}
-	
+}
+
+std::vector<class Tile*> Map::getCollidingTiles()
+{
+	return CollidingTiles;
+}
+
+int Map::getSizeX()
+{
+	return size_x;
+}
+
+int Map::getSizeY()
+{
+	return size_y;
 }

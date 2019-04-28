@@ -1,6 +1,7 @@
 #pragma once
 #include "Velocity.h"
 #include "TextureManager.h"
+#include "Tile.h"
 
 class Player {
 
@@ -16,10 +17,18 @@ public:
 	void setPositionX(float xpos);
 	void setPositionY(float ypos);
 
+	void setMapSize(int size_x, int size_y);
+	void setCollidingTiles(std::vector<class Tile*> tiles);
+
 private:
 	int oSize;
 	float xpos;
 	float ypos;
+	
+	// kolizja
+	int map_size_x;
+	int map_size_y;
+	std::vector<class Tile*> CollidingTiles;
 
 	bool movUp;
 	bool movDown;
