@@ -79,14 +79,13 @@ Map::Map(const char* path)
 			}
 		}
 	}
-	tiles_size = Tiles.size();
 }
 
 void Map::DrawMap()
 {
-	for (int i = 0; i < tiles_size; i++)
+	for (auto& i : Tiles)
 	{
-		Tiles[i]->update();
+		i->update();
 	}
 }
 

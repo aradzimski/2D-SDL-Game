@@ -39,7 +39,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 			flags
 		);
 
-		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED);
+		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
 		running = true;

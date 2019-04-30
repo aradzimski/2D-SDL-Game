@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "Collision.h"
 
 Player::Player(const char* texturesheet, float x, float y)
 {
@@ -71,6 +72,21 @@ void Player::Update()
 	destRect.w = oSize;
 	destRect.h = oSize;
 
+	// Kolizja
+	bool collide = false;
+	for (auto& i : CollidingTiles)
+	{
+		SDL_Rect collidingRect = i->getDestinationRect();
+
+		collide = Collision::checkCollision(collidingRect, destRect);
+
+		if (collide)
+		{
+			Collision::calculateCollision(collidingRect, destRect);
+			break;
+		}
+	}
+
 	// Kolizja z krawêdziami mapy
 
 	if (xpos > 0 && xpos < map_size_x)
@@ -89,6 +105,7 @@ void Player::Update()
 
 		oVelocity->setVelocityX(0);
 	}
+
 	if (ypos > 0 && ypos < map_size_y)
 	{
 		destRect.y = ypos = ypos + oVelocity->getVelocityY();
@@ -166,8 +183,8 @@ void Player::setPositionY(float ypos)
 
 void Player::setMapSize(int size_x, int size_y)
 {
-	map_size_x = size_x * Tileset::TILE_SIZE - Tileset::TILE_SIZE;
-	map_size_y = size_y * Tileset::TILE_SIZE - Tileset::TILE_SIZE;
+	map_size_x = size_x * Tileset::TILE_SIZE - destRect.w;
+	map_size_y = size_y * Tileset::TILE_SIZE - destRect.h;
 }
 
 void Player::setCollidingTiles(std::vector<class Tile*> tiles)

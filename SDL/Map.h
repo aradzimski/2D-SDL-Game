@@ -23,7 +23,6 @@ private:
 	tinyxml2::XMLDocument doc;
 	std::vector<std::vector<int> > map;
 	std::vector<class Tile*> Tiles;
-	int tiles_size;
 	std::vector<class Tile*> CollidingTiles;
 
 	bool ignoreFurtherCommands;

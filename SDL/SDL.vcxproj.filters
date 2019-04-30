@@ -60,6 +60,9 @@
     <ClCompile Include="Animation.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Collision.cpp">
+      <Filter>Pliki źródłowe\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -93,6 +96,9 @@
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Tile.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Collision.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
   </ItemGroup>
