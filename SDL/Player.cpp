@@ -68,24 +68,8 @@ void Player::Update()
 	srcRect.w = oSize;
 	srcRect.x = 0;
 	srcRect.y = 0;
-
 	destRect.w = oSize;
 	destRect.h = oSize;
-
-	// Kolizja
-	bool collide = false;
-	for (auto& i : CollidingTiles)
-	{
-		SDL_Rect collidingRect = i->getDestinationRect();
-
-		collide = Collision::checkCollision(collidingRect, destRect);
-
-		if (collide)
-		{
-			Collision::calculateCollision(collidingRect, destRect);
-			break;
-		}
-	}
 
 	// Kolizja z krawêdziami mapy
 
@@ -121,6 +105,25 @@ void Player::Update()
 	    destRect.y= ypos = map_size_y;
 
 		oVelocity->setVelocityY(0);
+	}
+
+	// Kolizja
+	bool collide = false;
+	SDL_Rect result;
+	result.x = destRect.x = xpos;
+	result.y = destRect.y = ypos;
+	for (auto& i : CollidingTiles)
+	{
+		SDL_Rect collidingRect = i->getDestinationRect();
+
+		collide = Collision::checkCollision(collidingRect, destRect);
+
+		if (collide)
+		{
+			result = Collision::calculateCollision(collidingRect, destRect, oVelocity);
+			destRect.x = xpos = result.x;
+			destRect.y = ypos = result.y;
+		}
 	}
 }
 
