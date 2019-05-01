@@ -82,3 +82,83 @@ SDL_Rect Collision::calculateCollision(SDL_Rect A, SDL_Rect B, Velocity* velocit
 
 	return result;
 }
+
+SDL_Rect Collision::calculateEnemyCollision(SDL_Rect A, SDL_Rect B, Velocity* velocity, Enemy* enemy)
+{
+	SDL_Rect result;
+	result.x = B.x;
+	result.y = B.y;
+
+	// Kolizja z do³u
+
+	if (A.y < B.y)
+	{
+		// Kolizja z prawej
+
+		if (A.x < B.x && (B.y - A.y) < (B.x - A.x))
+		{
+			result.x = A.x + A.w;
+			velocity->setVelocityX(0);
+			enemy->movRight = true;
+			enemy->movLeft = false;
+		}
+
+		// Kolizja z lewej
+
+		else if (A.x > B.x && (B.y - A.y) <= (A.x - B.x))
+		{
+			result.x = A.x - B.w;
+			velocity->setVelocityX(0);
+			enemy->movRight = false;
+			enemy->movLeft = true;
+		}
+
+		// Zwyk³a kolizja z do³u
+
+		else if ((B.y - A.y) > (A.x - B.x))
+		{
+			result.y = A.y + A.h;
+			velocity->setVelocityY(0);
+			enemy->movUp = false;
+			enemy->movDown = true;
+		}
+	}
+
+	// Kolizja z góry
+
+	else if (A.y >= B.y)
+	{
+
+		// Kolizja z prawej
+
+		if (A.x < B.x && (A.y - B.y) < (B.x - A.x))
+		{
+			result.x = A.x + A.w;
+			velocity->setVelocityX(0);
+			enemy->movRight = true;
+			enemy->movLeft = false;
+		}
+
+		// Kolizja z lewej
+
+		else if (A.x > B.x && (A.y - B.y) <= (A.x - B.x))
+		{
+			result.x = A.x - B.w;
+			velocity->setVelocityX(0);
+			enemy->movRight = false;
+			enemy->movLeft = true;
+		}
+
+		// Zwyk³a kolizja z góry
+
+		else if ((A.y - B.y) > (A.x - B.x))
+		{
+			result.y = A.y - B.h;
+			velocity->setVelocityY(0);
+			enemy->movUp = true;
+			enemy->movDown = false;
+		}
+	}
+
+	return result;
+}

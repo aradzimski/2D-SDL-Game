@@ -1,66 +1,26 @@
-#include "Player.h"
+#include "Enemy.h"
 #include "Collision.h"
 
-Player::Player(const char* texturesheet, float x, float y)
+Enemy::Enemy(const char* texturesheet, float x, float y, bool movUp, bool movDown, bool movLeft, bool movRight)
 {
 	oTexture = TextureManager::LoadTexture(texturesheet);
 
 	xpos = x;
 	ypos = y;
+
 	oSize = 64;
 
-	movUp = false;
-	movDown = false;
-	movLeft = false;
-	movRight = false;
-	
-	oVelocity = new Velocity(0.6f, 0.91f, 10);
+	this->movUp = movUp;
+	this->movDown = movDown;
+	this->movLeft = movLeft;
+	this->movRight = movRight;
+
+	oVelocity = new Velocity(0.6f, 0.91f, 5);
 }
 
-void Player::Update()
+void Enemy::Update()
 {
-	if (Game::event.type == SDL_KEYDOWN)
-	{
-		if (Game::event.key.keysym.sym == SDLK_w)
-		{
-			movUp = true;
-		}
 
-		if (Game::event.key.keysym.sym == SDLK_s)
-		{
-			movDown = true;
-		}
-
-		if (Game::event.key.keysym.sym == SDLK_a)
-		{
-			movLeft = true;
-		}
-
-		if (Game::event.key.keysym.sym == SDLK_d)
-		{
-			movRight = true;
-		}
-
-	}
-	if (Game::event.type == SDL_KEYUP)
-	{
-		if (Game::event.key.keysym.sym == SDLK_w)
-		{
-			movUp = false;
-		}
-		if (Game::event.key.keysym.sym == SDLK_s)
-		{
-			movDown = false;
-		}
-		if (Game::event.key.keysym.sym == SDLK_a)
-		{
-			movLeft = false;
-		}
-		if (Game::event.key.keysym.sym == SDLK_d)
-		{
-			movRight = false;
-		}
-	}
 	setVelocityFactor();
 	oVelocity->limitSpeed();
 
@@ -82,10 +42,18 @@ void Player::Update()
 		destRect.x = xpos = xpos + oVelocity->getVelocityX();
 	}
 	else {
-		if(xpos < 0)
-		destRect.x = xpos = 0;
+		if (xpos < 0)
+		{
+			destRect.x = xpos = 0;
+			movLeft = false;
+			movRight = true;
+		}
 		if (xpos + destRect.w > map_size_x)
-		destRect.x = xpos = map_size_x - destRect.w;
+		{
+			destRect.x = xpos = map_size_x - destRect.w;
+			movLeft = true;
+			movRight = false;
+		}
 
 		oVelocity->setVelocityX(0);
 	}
@@ -100,14 +68,24 @@ void Player::Update()
 	}
 	else {
 		if (ypos < 0)
-		destRect.y = ypos = 0;
-		if (ypos + destRect.h > map_size_y)
-	    destRect.y= ypos = map_size_y - destRect.h;
+		{
+			destRect.y = ypos = 0;
+			movUp = false;
+			movDown = true;
+		}
+		if (ypos + destRect.h >= map_size_y)
+		{
+			destRect.y = ypos = map_size_y - destRect.h;
+			movUp = true;
+			movDown = false;
+		}
 
 		oVelocity->setVelocityY(0);
 	}
 
-	// Kolizja
+
+	// Kolizja 
+
 	bool collide = false;
 	SDL_Rect result;
 	result.x = destRect.x = xpos;
@@ -120,20 +98,20 @@ void Player::Update()
 
 		if (collide)
 		{
-			result = Collision::calculateCollision(collidingRect, destRect, oVelocity);
+			result = Collision::calculateEnemyCollision(collidingRect, destRect, oVelocity, this);
 			destRect.x = xpos = result.x;
 			destRect.y = ypos = result.y;
 		}
 	}
 }
 
-void Player::Render()
+void Enemy::Render()
 {
 	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
 	SDL_RenderCopy(Game::renderer, oTexture, &srcRect, &drawingRect);
 }
 
-void Player::setVelocityFactor()
+void Enemy::setVelocityFactor()
 {
 	if (movUp)
 	{
@@ -151,7 +129,6 @@ void Player::setVelocityFactor()
 	{
 		oVelocity->moveRight();
 	}
-	// W przypadku gdy nie chcemy poruszaæ siê ju¿ po osi X, albo po osi Y stopniowo spowalniamy gracza wzglêdem tej osi.
 	if (!movUp && !movDown && abs(oVelocity->getVelocityY()) > 0)
 	{
 		oVelocity->applyFrictionY();
@@ -164,39 +141,38 @@ void Player::setVelocityFactor()
 	return;
 }
 
-float Player::getPositionX()
+float Enemy::getPositionX()
 {
 	return xpos;
 }
 
-float Player::getPositionY()
+float Enemy::getPositionY()
 {
 	return ypos;
 }
 
-void Player::setPositionX(float xpos)
+void Enemy::setPositionX(float xpos)
 {
 	this->xpos = xpos;
 }
 
-void Player::setPositionY(float ypos)
+void Enemy::setPositionY(float ypos)
 {
 	this->ypos = ypos;
 }
 
-void Player::setMapSize(int size_x, int size_y)
+void Enemy::setMapSize(int size_x, int size_y)
 {
 	map_size_x = size_x * Tileset::TILE_SIZE - destRect.w;
 	map_size_y = size_y * Tileset::TILE_SIZE - destRect.h;
 }
 
-void Player::setCollidingTiles(std::vector<class Tile*> tiles)
+void Enemy::setCollidingTiles(std::vector<class Tile*> tiles)
 {
 	CollidingTiles = tiles;
 }
 
-SDL_Rect Player::getRect()
+SDL_Rect Enemy::getRect()
 {
 	return destRect;
 }
-

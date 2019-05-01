@@ -3,12 +3,13 @@
 #include "Velocity.h"
 #include "TextureManager.h"
 #include "Tile.h"
+#include <vector>
 
-class Player {
+class Enemy {
 
 public:
-	Player(const char* texturesheet, float x, float y);
-	~Player();
+	Enemy(const char* texturesheet, float x, float y, bool movUp, bool movDown, bool movLeft, bool movRight);
+	~Enemy();
 
 	void Update();
 	void Render();
@@ -21,22 +22,22 @@ public:
 	void setMapSize(int size_x, int size_y);
 	void setCollidingTiles(std::vector<class Tile*> tiles);
 
+	bool movUp;
+	bool movDown;
+	bool movLeft;
+	bool movRight;
+
 	SDL_Rect getRect();
 
 private:
 	int oSize;
 	float xpos;
 	float ypos;
-	
+
 	// kolizja
 	int map_size_x;
 	int map_size_y;
 	std::vector<class Tile*> CollidingTiles;
-
-	bool movUp;
-	bool movDown;
-	bool movLeft;
-	bool movRight;
 
 	float velocityFactorX;
 	float velocityFactorY;
