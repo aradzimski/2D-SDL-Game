@@ -24,17 +24,36 @@ Map::Map(const char* path)
 
 	map = std::vector<std::vector<int> >(size_y, std::vector<int>(size_x, 0));
 	
+	int pointer = 0;
+	bool commaseparator = false;
 	char* layer;
 	tinyxml2::XMLElement* layerElement = doc.FirstChildElement("map")->FirstChildElement("layer");
 	for (int y = 0; y < size_y; y++)
 	{
 		layer = (char*)layerElement->GetText();
+		pointer = 0;
 		for (int x = 0; x < size_x; x++)
 		{
-			map[y][x] = layer[x] - 48; // konwersja char na int
+			int value = 0;
+			commaseparator = false;
+			while (!commaseparator)
+			{
+				if (layer[pointer] == 44)
+				{
+					map[y][x] = value;
+					commaseparator = true;
+					pointer++;
+				}
+				else
+				{
+					value += layer[pointer] - 48; // konwersja char na int
+					pointer++;
+				}
+			}
 		}
 		layerElement = layerElement->NextSiblingElement("layer");
 	}
+
 	int type = 0;
 	for (int column = 0; column < size_x; column++)
 	{
