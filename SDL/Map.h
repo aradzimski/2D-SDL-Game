@@ -4,6 +4,7 @@
 #include "Animation.h"
 #include "tinyxml2.h"
 #include "Tile.h"
+#include "Enemy.h"
 #include <vector>
 
 class Map 
@@ -16,6 +17,8 @@ public:
 	int getSizeX();
 	int getSizeY();
 
+	std::vector<class Enemy*> getEnemiesList();
+
 private:
 
 	SDL_Rect src, dest, drawingRect;
@@ -24,6 +27,8 @@ private:
 	std::vector<std::vector<int> > map;
 	std::vector<class Tile*> Tiles;
 	std::vector<class Tile*> CollidingTiles;
+
+	std::vector<class Enemy*> Enemies;
 
 	bool ignoreFurtherCommands;
 

@@ -66,6 +66,9 @@
     <ClCompile Include="Enemy.cpp">
       <Filter>Pliki źródłowe\Engine</Filter>
     </ClCompile>
+    <ClCompile Include="Text.cpp">
+      <Filter>Pliki źródłowe\Engine</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -105,6 +108,9 @@
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
+      <Filter>Pliki nagłówkowe\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="Text.h">
       <Filter>Pliki nagłówkowe\Engine</Filter>
     </ClInclude>
   </ItemGroup>

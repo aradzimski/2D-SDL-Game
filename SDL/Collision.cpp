@@ -27,7 +27,7 @@ SDL_Rect Collision::calculateCollision(SDL_Rect A, SDL_Rect B, Velocity* velocit
 	{
 		// Kolizja z prawej
 
-		if (A.x < B.x && (B.y - A.y) < (B.x - A.x))
+		if (A.x < B.x && (B.y - A.y) <= (B.x - A.x))
 		{
 			result.x = A.x + A.w;
 			velocity->setVelocityX(0);
@@ -65,7 +65,7 @@ SDL_Rect Collision::calculateCollision(SDL_Rect A, SDL_Rect B, Velocity* velocit
 
 		// Kolizja z lewej
 
-		else if (A.x > B.x && (A.y - B.y) <= (A.x - B.x))
+		else if (A.x > B.x && (A.y - B.y) < (A.x - B.x))
 		{
 			result.x = A.x - B.w;
 			velocity->setVelocityX(0);
@@ -95,7 +95,7 @@ SDL_Rect Collision::calculateEnemyCollision(SDL_Rect A, SDL_Rect B, Velocity* ve
 	{
 		// Kolizja z prawej
 
-		if (A.x < B.x && (B.y - A.y) < (B.x - A.x))
+		if (A.x < B.x && (B.y - A.y) <= (B.x - A.x))
 		{
 			result.x = A.x + A.w;
 			velocity->setVelocityX(0);
@@ -141,7 +141,7 @@ SDL_Rect Collision::calculateEnemyCollision(SDL_Rect A, SDL_Rect B, Velocity* ve
 
 		// Kolizja z lewej
 
-		else if (A.x > B.x && (A.y - B.y) <= (A.x - B.x))
+		else if (A.x > B.x && (A.y - B.y) < (A.x - B.x))
 		{
 			result.x = A.x - B.w;
 			velocity->setVelocityX(0);

@@ -20,6 +20,63 @@ Map::Map(const char* path)
 
 	tileset = new Tileset(tilesetname);
 
+	// Lista przeciwników
+
+	std::string en_type;
+	bool en_animation;
+	std::string en_sprite;
+	int en_xpos;
+	int en_ypos;
+	int en_speed;
+	bool en_movUp;
+	bool en_movDown;
+	bool en_movLeft;
+	bool en_movRight;
+
+	for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("enemies")->FirstChildElement("enemy"); child; child = child->NextSiblingElement("enemy"))
+	{
+		en_type = child->Attribute("type");
+		en_animation = child->BoolAttribute("animation");
+		en_sprite = child->Attribute("sprite");
+		en_xpos = child->IntAttribute("xpos");
+		en_ypos = child->IntAttribute("ypos");
+		en_speed = child->IntAttribute("speed");
+		en_movUp = child->BoolAttribute("up");
+		en_movDown = child->BoolAttribute("down");
+		en_movLeft = child->BoolAttribute("left");
+		en_movRight = child->BoolAttribute("right");
+
+		std::string en_sprite_location = "Assets/Sprites/Enemies/" + en_type + "/";
+
+		if (en_animation)
+		{
+			int en_animationDelay = child->IntAttribute("delay");
+			Animation* en_anim = new Animation(tileset, animationDelay);
+
+			for (tinyxml2::XMLElement* tileAnimation = child->FirstChildElement("animation"); tileAnimation; tileAnimation = tileAnimation->NextSiblingElement("animation"))
+			{
+				// animacja do napisania
+			}
+		}
+		else
+		{
+			Enemies.push_back(
+				new Enemy(
+				(en_sprite_location + en_sprite).c_str(), 
+					en_xpos,
+					en_ypos, 
+					en_movUp, 
+					en_movDown, 
+					en_movRight, 
+					en_movLeft, 
+					en_speed
+				)
+			);
+		}
+	}
+
+	//delete &en_type, en_animation, &en_sprite, en_xpos, en_ypos, en_speed, en_movUp, en_movDown, en_movLeft, en_movRight;
+
 	// Budowanie mapy
 
 	map = std::vector<std::vector<int> >(size_y, std::vector<int>(size_x, 0));
@@ -121,4 +178,9 @@ int Map::getSizeX()
 int Map::getSizeY()
 {
 	return size_y;
+}
+
+std::vector<class Enemy*> Map::getEnemiesList()
+{
+	return Enemies;
 }

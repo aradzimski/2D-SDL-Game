@@ -29,6 +29,7 @@ private:
 
 	bool running;
 	int cnt = 0;
+	int deathCounter = 0;
 
 };
 

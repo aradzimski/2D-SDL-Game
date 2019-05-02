@@ -1,7 +1,7 @@
 #include "Player.h"
 #include "Collision.h"
 
-Player::Player(const char* texturesheet, float x, float y)
+Player::Player(const char* texturesheet, int x, int y)
 {
 	oTexture = TextureManager::LoadTexture(texturesheet);
 
@@ -14,7 +14,7 @@ Player::Player(const char* texturesheet, float x, float y)
 	movLeft = false;
 	movRight = false;
 	
-	oVelocity = new Velocity(0.6f, 0.91f, 10);
+	oVelocity = new Velocity(0.6f, 0.91f, 7);
 }
 
 void Player::Update()
@@ -164,22 +164,22 @@ void Player::setVelocityFactor()
 	return;
 }
 
-float Player::getPositionX()
+int Player::getPositionX()
 {
 	return xpos;
 }
 
-float Player::getPositionY()
+int Player::getPositionY()
 {
 	return ypos;
 }
 
-void Player::setPositionX(float xpos)
+void Player::setPositionX(int xpos)
 {
 	this->xpos = xpos;
 }
 
-void Player::setPositionY(float ypos)
+void Player::setPositionY(int ypos)
 {
 	this->ypos = ypos;
 }

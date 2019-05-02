@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "Collision.h"
 
-Enemy::Enemy(const char* texturesheet, float x, float y, bool movUp, bool movDown, bool movLeft, bool movRight)
+Enemy::Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, bool movLeft, bool movRight, int speed)
 {
 	oTexture = TextureManager::LoadTexture(texturesheet);
 
@@ -15,7 +15,7 @@ Enemy::Enemy(const char* texturesheet, float x, float y, bool movUp, bool movDow
 	this->movLeft = movLeft;
 	this->movRight = movRight;
 
-	oVelocity = new Velocity(0.6f, 0.91f, 5);
+	oVelocity = new Velocity(0.6f, 0.91f, speed);
 }
 
 void Enemy::Update()
@@ -42,13 +42,13 @@ void Enemy::Update()
 		destRect.x = xpos = xpos + oVelocity->getVelocityX();
 	}
 	else {
-		if (xpos < 0)
+		if (xpos <= 0)
 		{
 			destRect.x = xpos = 0;
 			movLeft = false;
 			movRight = true;
 		}
-		if (xpos + destRect.w > map_size_x)
+		if (xpos + destRect.w >= map_size_x)
 		{
 			destRect.x = xpos = map_size_x - destRect.w;
 			movLeft = true;
@@ -67,7 +67,7 @@ void Enemy::Update()
 		destRect.y = ypos = ypos + oVelocity->getVelocityY();
 	}
 	else {
-		if (ypos < 0)
+		if (ypos <= 0)
 		{
 			destRect.y = ypos = 0;
 			movUp = false;
@@ -141,22 +141,22 @@ void Enemy::setVelocityFactor()
 	return;
 }
 
-float Enemy::getPositionX()
+int Enemy::getPositionX()
 {
 	return xpos;
 }
 
-float Enemy::getPositionY()
+int Enemy::getPositionY()
 {
 	return ypos;
 }
 
-void Enemy::setPositionX(float xpos)
+void Enemy::setPositionX(int xpos)
 {
 	this->xpos = xpos;
 }
 
-void Enemy::setPositionY(float ypos)
+void Enemy::setPositionY(int ypos)
 {
 	this->ypos = ypos;
 }

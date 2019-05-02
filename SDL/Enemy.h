@@ -8,16 +8,16 @@
 class Enemy {
 
 public:
-	Enemy(const char* texturesheet, float x, float y, bool movUp, bool movDown, bool movLeft, bool movRight);
+	Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, bool movLeft, bool movRight, int speed);
 	~Enemy();
 
 	void Update();
 	void Render();
 
-	float getPositionX();
-	float getPositionY();
-	void setPositionX(float xpos);
-	void setPositionY(float ypos);
+	int getPositionX();
+	int getPositionY();
+	void setPositionX(int xpos);
+	void setPositionY(int ypos);
 
 	void setMapSize(int size_x, int size_y);
 	void setCollidingTiles(std::vector<class Tile*> tiles);
@@ -31,16 +31,16 @@ public:
 
 private:
 	int oSize;
-	float xpos;
-	float ypos;
+	int xpos;
+	int ypos;
 
 	// kolizja
 	int map_size_x;
 	int map_size_y;
 	std::vector<class Tile*> CollidingTiles;
 
-	float velocityFactorX;
-	float velocityFactorY;
+	int velocityFactorX;
+	int velocityFactorY;
 
 	Velocity* oVelocity;
 	SDL_Texture* oTexture;
