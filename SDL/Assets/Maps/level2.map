@@ -5,7 +5,9 @@
  </checkpoints>
  <gates>
  </gates>
- <tileset source="test.png"/>
+ <coins>
+ </coins>
+ <tileset source="castle.png"/>
  <specialtiles>
   <tile id="2" animation="true" delay="60" collision="true">
    <animation tile="2"/>

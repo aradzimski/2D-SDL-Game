@@ -1,12 +1,11 @@
-#include "Checkpoint.h"
+#include "Coin.h"
 
-Checkpoint::Checkpoint(const char* sprite, int xpos, int ypos, bool animated)
+Coin::Coin(const char* sprite, int xpos, int ypos, bool animated)
 {
 	oTexture = TextureManager::LoadTexture(sprite);
 
 	this->xpos = xpos;
 	this->ypos = ypos;
-	this->animated = animated;
 
 	srcRect.x = 0;
 	srcRect.y = 0;
@@ -17,9 +16,11 @@ Checkpoint::Checkpoint(const char* sprite, int xpos, int ypos, bool animated)
 	destRect.y = ypos;
 	destRect.w = Tileset::TILE_SIZE;
 	destRect.h = Tileset::TILE_SIZE;
+
+	active = true;
 }
 
-Checkpoint::Checkpoint(const char* sprite, int xpos, int ypos, bool animated, Animation* animation)
+Coin::Coin(const char* sprite, int xpos, int ypos, bool animated, Animation* animation)
 {
 	oTexture = TextureManager::LoadTexture(sprite);
 
@@ -37,24 +38,36 @@ Checkpoint::Checkpoint(const char* sprite, int xpos, int ypos, bool animated, An
 	destRect.y = ypos;
 	destRect.w = Tileset::TILE_SIZE;
 	destRect.h = Tileset::TILE_SIZE;
+
+	active = true;
 }
 
-int Checkpoint::getCheckpointX()
+int Coin::getCoinX()
 {
 	return xpos;
 }
 
-int Checkpoint::getCheckpointY()
+int Coin::getCoinY()
 {
 	return ypos;
 }
 
-SDL_Rect Checkpoint::getRect()
+SDL_Rect Coin::getRect()
 {
 	return destRect;
 }
 
-void Checkpoint::Render()
+bool Coin::isActive()
+{
+	return active;
+}
+
+void Coin::setActive(bool set)
+{
+	active = set;
+}
+
+void Coin::Render()
 {
 	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
 

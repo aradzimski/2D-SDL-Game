@@ -33,6 +33,8 @@ private:
 	int cnt = 0;
 	
 	int deathCounter = 0;
+	int coinCounter = 0;
+
 	int checkpoint_x = 0;
 	int checkpoint_y = 0;
 

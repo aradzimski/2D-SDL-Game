@@ -57,7 +57,7 @@ void Velocity::moveRight()
 void Velocity::applyFrictionX()
 {
 	x *= friction;
-	if (abs(x) < 2)
+	if (abs(x) < 1)
 	{
 		x = 0;
 	}
@@ -66,7 +66,7 @@ void Velocity::applyFrictionX()
 void Velocity::applyFrictionY()
 {
 	y *= friction;
-	if (abs(y) < 2)
+	if (abs(y) < 1)
 	{
 		y = 0;
 	}

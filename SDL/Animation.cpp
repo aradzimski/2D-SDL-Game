@@ -11,6 +11,16 @@ Animation::Animation(Tileset* tileset, int delay)
 	tile_counter = 0;
 }
 
+Animation::Animation(int delay)
+{
+    std::vector <std::string> AnimationSprites;
+
+	this->delay = delay;
+
+	delay_counter = 0;
+	sprite_counter = 0;
+}
+
 void Animation::addTile(int tileID)
 {
 	AnimationTiles.push_back(tileID);
@@ -48,4 +58,30 @@ SDL_Texture* Animation::getNextTile()
 		tile_counter = 0;
 	}
 	return nextTile;
+}
+
+void Animation::addSprite(std::string path)
+{
+	AnimationSprites.push_back(path);
+}
+
+SDL_Texture* Animation::getNextSprite()
+{
+	if (delay_counter % (delay) == 0)
+	{
+		nextSprite = TextureManager::LoadTexture(AnimationSprites[sprite_counter].c_str());
+		sprite_counter++;
+	}
+
+	delay_counter++;
+
+	if (delay_counter == delay * 100000)
+	{
+		delay_counter = 0;
+	}
+	if (sprite_counter == AnimationSprites.size())
+	{
+		sprite_counter = 0;
+	}
+	return nextSprite;
 }

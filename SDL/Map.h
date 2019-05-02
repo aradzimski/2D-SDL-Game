@@ -7,6 +7,7 @@
 #include "Enemy.h"
 #include "Checkpoint.h"
 #include "Gate.h"
+#include "Coin.h"
 
 class Map 
 {
@@ -21,6 +22,7 @@ public:
 	std::vector<class Enemy*> getEnemiesList();
 	std::vector<class Checkpoint*> getCheckpointsList();
 	std::vector<class Gate*> getGatesList();
+	std::vector<class Coin*> getCoinsList();
 
 	int getStartPosX();
 	int getStartPosY();
@@ -44,6 +46,7 @@ private:
 	std::vector<class Enemy*> Enemies;
 	std::vector<class Checkpoint*> Checkpoints;
 	std::vector<class Gate*> Gates;
+	std::vector<class Coin*> Coins;
 
 	bool ignoreFurtherCommands;
 

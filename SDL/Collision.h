@@ -9,6 +9,7 @@ class Collision
 public:
 
 	static bool checkCollision(SDL_Rect A, SDL_Rect B);
+	static bool checkEnemyCollision(SDL_Rect enemy, SDL_Rect player);
 	static SDL_Rect calculateCollision(SDL_Rect A, SDL_Rect B, Velocity* velocity);
 	static SDL_Rect calculateEnemyCollision(SDL_Rect A, SDL_Rect B, Velocity* velocity, Enemy* enemy);
 

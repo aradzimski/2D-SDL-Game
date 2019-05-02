@@ -95,20 +95,47 @@ Map::Map(const char* path)
 	std::string chkp_sprite;
 	int chkp_xpos;
 	int chkp_ypos;
+	bool chkp_animation;
 
 	for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("checkpoints")->FirstChildElement("checkpoint"); child; child = child->NextSiblingElement("checkpoint"))
 	{
 		chkp_sprite = child->Attribute("sprite");
 		chkp_xpos = child->IntAttribute("xpos");
 		chkp_ypos = child->IntAttribute("ypos");
+		chkp_animation = child->BoolAttribute("animation");
+		
+		if (chkp_animation)
+		{
+			int chkp_delay = child->IntAttribute("delay");
+			Animation* chkp_anim = new Animation(chkp_delay);
 
-		Checkpoints.push_back(
-			new Checkpoint(
-			("Assets/Sprites/" + chkp_sprite).c_str(),
-				chkp_xpos,
-				chkp_ypos
-			)
-		);
+			for (tinyxml2::XMLElement* spriteAnimation = child->FirstChildElement("animation"); spriteAnimation; spriteAnimation = spriteAnimation->NextSiblingElement("animation"))
+			{
+				std::string spritename = spriteAnimation->Attribute("sprite");
+				std::string spritepath = "Assets/Sprites/";
+				chkp_anim->addSprite(spritepath + spritename);
+			}
+			Checkpoints.push_back(
+				new Checkpoint(
+				("Assets/Sprites/" + chkp_sprite).c_str(),
+					chkp_xpos,
+					chkp_ypos,
+					chkp_animation,
+					chkp_anim
+				)
+			);
+		}
+		else
+		{
+			Checkpoints.push_back(
+				new Checkpoint(
+				("Assets/Sprites/" + chkp_sprite).c_str(),
+					chkp_xpos,
+					chkp_ypos,
+					chkp_animation
+				)
+			);
+		}
 	}
 
 	// Lista wyjœæ z mapy
@@ -130,6 +157,54 @@ Map::Map(const char* path)
 				gate_ypos
 			)
 		);
+	}
+
+	// Lista pieni¹¿ków na mapie
+
+	std::string coin_sprite;
+	int coin_xpos;
+	int coin_ypos;
+	bool coin_animation;
+
+	for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("coins")->FirstChildElement("coin"); child; child = child->NextSiblingElement("coin"))
+	{
+		coin_sprite = child->Attribute("sprite");
+		coin_xpos = child->IntAttribute("xpos");
+		coin_ypos = child->IntAttribute("ypos");
+		coin_animation = child->BoolAttribute("animation");
+
+		if (coin_animation)
+		{
+			int coin_delay = child->IntAttribute("delay");
+			Animation* coin_anim = new Animation(coin_delay);
+
+			for (tinyxml2::XMLElement* spriteAnimation = child->FirstChildElement("animation"); spriteAnimation; spriteAnimation = spriteAnimation->NextSiblingElement("animation"))
+			{
+				std::string spritename = spriteAnimation->Attribute("sprite");
+				std::string spritepath = "Assets/Sprites/";
+				coin_anim->addSprite(spritepath + spritename);
+			}
+			Coins.push_back(
+				new Coin(
+				("Assets/Sprites/" + coin_sprite).c_str(),
+					coin_xpos,
+					coin_ypos,
+					coin_animation,
+					coin_anim
+				)
+			);
+		}
+		else
+		{
+			Coins.push_back(
+				new Coin(
+				("Assets/Sprites/" + coin_sprite).c_str(),
+					coin_xpos,
+					coin_ypos,
+					coin_animation
+				)
+			);
+		}
 	}
 
 	// Budowanie mapy
@@ -167,9 +242,9 @@ Map::Map(const char* path)
 	}
 
 	int type = 0;
-	for (int column = 0; column < size_x; column++)
+	for (int column = 0; column < size_y; column++)
 	{
-		for (int row = 0; row < size_y; row++)
+		for (int row = 0; row < size_x; row++)
 		{
 			ignoreFurtherCommands = false;
 			type = map[column][row];
@@ -248,6 +323,11 @@ std::vector<class Checkpoint*> Map::getCheckpointsList()
 std::vector<class Gate*> Map::getGatesList()
 {
 	return Gates;
+}
+
+std::vector<class Coin*> Map::getCoinsList()
+{
+	return Coins;
 }
 
 int Map::getStartPosX()
