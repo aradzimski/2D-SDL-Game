@@ -1,7 +1,6 @@
 #include "Game.h"
 #include "Map.h"
 #include "Player.h"
-#include "Enemy.h"
 #include "Collision.h"
 #include "Text.h"
 #include <vector>
@@ -65,8 +64,6 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 	deathCounterText = new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
 	deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, "0", { 255,0,0,255 });
 	deathCounter = 0;
-	
-	player = new Player("Assets/Sprites/Player.png", 500, 500);
 
 	map = new Map("Assets/Maps/level1.map");
 	
@@ -75,6 +72,8 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 		i->setMapSize(map->getSizeX(), map->getSizeY());
 		i->setCollidingTiles(map->getCollidingTiles());
 	}
+
+	player = new Player("Assets/Sprites/Player.png", map->getStartPosX(), map->getStartPosY());
 
 	player->setMapSize(map->getSizeX(), map->getSizeY());
 	player->setCollidingTiles(map->getCollidingTiles());
@@ -99,16 +98,39 @@ void Game::update()
 {
 	player->Update();
 
-	bool collision = false;
+	bool checkpoint_collision = false;
+	for (auto& i : map->getCheckpointsList())
+	{
+		checkpoint_collision = Collision::checkCollision(i->getRect(), player->getRect());
+
+		if (checkpoint_collision)
+		{
+			checkpoint_x = i->getCheckpointX();
+			checkpoint_y = i->getCheckpointY();
+		}
+	}
+
+	bool gate_collision = false;
+	for (auto& i : map->getGatesList())
+	{
+		gate_collision = Collision::checkCollision(i->getRect(), player->getRect());
+
+		if (gate_collision)
+		{
+			this->changeMap(map->getNextLevel().c_str());
+		}
+	}
+
+	bool enemy_collision = false;
 	for (auto& i : map->getEnemiesList())
 	{
 		i->Update();
-		collision = Collision::checkCollision(i->getRect(), player->getRect());
+		enemy_collision = Collision::checkCollision(i->getRect(), player->getRect());
 
-		if (collision)
+		if (enemy_collision)
 		{
-			player->setPositionX(20); 
-			player->setPositionY(20);
+			player->setPositionX(checkpoint_x); 
+			player->setPositionY(checkpoint_y);
 			deathCounter++;
 		}
 	}
@@ -132,6 +154,16 @@ void Game::render()
 	SDL_RenderClear(renderer);
 	map->DrawMap();
 
+	for (auto& i : map->getCheckpointsList())
+	{
+		i->Render();
+	}
+
+	for (auto& i : map->getGatesList())
+	{
+		i->Render();
+	}
+
 	for (auto& i : map->getEnemiesList())
 	{
 		i->Render();
@@ -150,4 +182,20 @@ void Game::clean()
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
-};
+}
+
+void Game::changeMap(const char* path)
+{
+	map = new Map(path);
+
+	for (auto& i : map->getEnemiesList())
+	{
+		i->setMapSize(map->getSizeX(), map->getSizeY());
+		i->setCollidingTiles(map->getCollidingTiles());
+	}
+
+	player = new Player("Assets/Sprites/Player.png", map->getStartPosX(), map->getStartPosY());
+
+	player->setMapSize(map->getSizeX(), map->getSizeY());
+	player->setCollidingTiles(map->getCollidingTiles());
+}

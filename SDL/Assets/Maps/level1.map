@@ -1,10 +1,17 @@
-<map width="80" height="80">
+<map width="80" height="80" startposx="300" startposy="300" nextlevel="level2.map">
  <enemies>
   <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="1792" ypos="256" speed="10" up="false" down="true" left="false" right="false"/>
   <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="1856" ypos="960" speed="10" up="true" down="false" left="false" right="false"/>
   <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2624" ypos="256" speed="10" up="true" down="false" left="false" right="false"/>
   <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2688" ypos="1088" speed="10" up="true" down="false" left="false" right="false"/>
  </enemies>
+ <checkpoints>
+  <checkpoint sprite="Checkpoint.png" ypos="30" xpos="30"/>
+  <checkpoint sprite="Checkpoint.png" ypos="500" xpos="1600"/>
+ </checkpoints>
+ <gates>
+  <gate sprite="Gate.png" ypos="500" xpos="2100"/>
+ </gates>
  <tileset source="test.png"/>
  <specialtiles>
   <tile id="2" animation="true" delay="60" collision="true">

@@ -5,7 +5,8 @@
 #include "tinyxml2.h"
 #include "Tile.h"
 #include "Enemy.h"
-#include <vector>
+#include "Checkpoint.h"
+#include "Gate.h"
 
 class Map 
 {
@@ -18,8 +19,20 @@ public:
 	int getSizeY();
 
 	std::vector<class Enemy*> getEnemiesList();
+	std::vector<class Checkpoint*> getCheckpointsList();
+	std::vector<class Gate*> getGatesList();
+
+	int getStartPosX();
+	int getStartPosY();
+
+	std::string getNextLevel();
 
 private:
+
+	int startposx;
+	int startposy;
+
+	std::string nextlevel;
 
 	SDL_Rect src, dest, drawingRect;
 	Tileset* tileset;
@@ -29,6 +42,8 @@ private:
 	std::vector<class Tile*> CollidingTiles;
 
 	std::vector<class Enemy*> Enemies;
+	std::vector<class Checkpoint*> Checkpoints;
+	std::vector<class Gate*> Gates;
 
 	bool ignoreFurtherCommands;
 

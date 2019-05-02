@@ -23,13 +23,18 @@ public:
 	static SDL_Event event;
 	static SDL_Rect camera;
 
+	void changeMap(const char* path);
+
 private:
 
 	SDL_Window *window;
 
 	bool running;
 	int cnt = 0;
+	
 	int deathCounter = 0;
+	int checkpoint_x = 0;
+	int checkpoint_y = 0;
 
 };
 

@@ -5,6 +5,7 @@ Map::Map(const char* path)
 {
 	// wczytujemy poziom razem z tilesetem z pliku mapy
 	doc.LoadFile(path);
+	
 	// Rozmiar mapy
 	size_x = doc
 		.FirstChildElement("map")
@@ -12,6 +13,20 @@ Map::Map(const char* path)
 	size_y = doc
 		.FirstChildElement("map")
 		->IntAttribute("height");
+
+	// Pozycja startowa gracza
+	startposx = doc
+		.FirstChildElement("map")
+		->IntAttribute("startposx");
+	startposy = doc
+		.FirstChildElement("map")
+		->IntAttribute("startposy");
+
+	// Nastêpna mapa
+	nextlevel = doc
+		.FirstChildElement("map")
+		->Attribute("nextlevel");
+
 	// Tileset
 	std::string tilesetname = (char*)doc
 		.FirstChildElement("map")
@@ -75,7 +90,47 @@ Map::Map(const char* path)
 		}
 	}
 
-	//delete &en_type, en_animation, &en_sprite, en_xpos, en_ypos, en_speed, en_movUp, en_movDown, en_movLeft, en_movRight;
+	// Lista checkpointów
+
+	std::string chkp_sprite;
+	int chkp_xpos;
+	int chkp_ypos;
+
+	for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("checkpoints")->FirstChildElement("checkpoint"); child; child = child->NextSiblingElement("checkpoint"))
+	{
+		chkp_sprite = child->Attribute("sprite");
+		chkp_xpos = child->IntAttribute("xpos");
+		chkp_ypos = child->IntAttribute("ypos");
+
+		Checkpoints.push_back(
+			new Checkpoint(
+			("Assets/Sprites/" + chkp_sprite).c_str(),
+				chkp_xpos,
+				chkp_ypos
+			)
+		);
+	}
+
+	// Lista wyjœæ z mapy
+
+	std::string gate_sprite;
+	int gate_xpos;
+	int gate_ypos;
+
+	for (tinyxml2::XMLElement* child = doc.FirstChildElement("map")->FirstChildElement("gates")->FirstChildElement("gate"); child; child = child->NextSiblingElement("gate"))
+	{
+		gate_sprite = child->Attribute("sprite");
+		gate_xpos = child->IntAttribute("xpos");
+		gate_ypos = child->IntAttribute("ypos");
+
+		Gates.push_back(
+			new Gate(
+			("Assets/Sprites/" + gate_sprite).c_str(),
+				gate_xpos,
+				gate_ypos
+			)
+		);
+	}
 
 	// Budowanie mapy
 
@@ -183,4 +238,29 @@ int Map::getSizeY()
 std::vector<class Enemy*> Map::getEnemiesList()
 {
 	return Enemies;
+}
+
+std::vector<class Checkpoint*> Map::getCheckpointsList()
+{
+	return Checkpoints;
+}
+
+std::vector<class Gate*> Map::getGatesList()
+{
+	return Gates;
+}
+
+int Map::getStartPosX()
+{
+	return startposx;
+}
+
+int Map::getStartPosY()
+{
+	return startposy;
+}
+
+std::string Map::getNextLevel()
+{
+	return "Assets/Maps/" + nextlevel;
 }
