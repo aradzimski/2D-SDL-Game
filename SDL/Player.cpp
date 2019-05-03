@@ -108,13 +108,12 @@ void Player::Update()
 	}
 
 	// Kolizja
-	bool collide = false;
-	SDL_Rect result;
+	collide = false;
 	result.x = destRect.x = xpos;
 	result.y = destRect.y = ypos;
 	for (auto& i : CollidingTiles)
 	{
-		SDL_Rect collidingRect = i->getDestinationRect();
+		collidingRect = i->getDestinationRect();
 
 		collide = Collision::checkCollision(collidingRect, destRect);
 
@@ -129,7 +128,7 @@ void Player::Update()
 
 void Player::Render()
 {
-	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
+	drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
 	SDL_RenderCopy(Game::renderer, oTexture, &srcRect, &drawingRect);
 }
 

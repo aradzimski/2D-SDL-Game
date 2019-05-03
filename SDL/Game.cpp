@@ -15,6 +15,11 @@ Text* coinCounterText2;
 Map* map;
 SDL_Rect Game::camera = { 0, 0, 12800, 12800};
 
+bool checkpoint_collision;
+bool gate_collision;
+bool coin_collision;
+bool enemy_collision;
+
 Game::Game()
 {
 }
@@ -52,7 +57,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 			flags
 		);
 
-		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED /*| SDL_RENDERER_PRESENTVSYNC*/);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
 		running = true;
@@ -63,7 +68,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 		running = false;
 	}
 
-	deathCounterText = new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
+	deathCounterText =  new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
 	deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, "0", { 255,0,0,255 });
 	deathCounter = 0;
 
@@ -106,10 +111,9 @@ void Game::handleEvents()
 
 void Game::update()
 {
-
 	player->Update();
 
-	bool checkpoint_collision = false;
+	checkpoint_collision = false;
 	for (auto& i : map->getCheckpointsList())
 	{
 		checkpoint_collision = Collision::checkCollision(i->getRect(), player->getRect());
@@ -121,7 +125,7 @@ void Game::update()
 		}
 	}
 
-	bool gate_collision = false;
+	gate_collision = false;
 	for (auto& i : map->getGatesList())
 	{
 		gate_collision = Collision::checkCollision(i->getRect(), player->getRect());
@@ -132,7 +136,7 @@ void Game::update()
 		}
 	}
 
-	bool coin_collision = false;
+	coin_collision = false;
 
 	for (auto& i : map->getCoinsList())
 	{
@@ -144,11 +148,15 @@ void Game::update()
 			{
 				i->setActive(false);
 				coinCounter++;
+				delete coinCounterText2;
+				delete deathCounterText2;
+				coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
+				deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(deathCounter), { 255,0,0,255 });
 			}
 		}
 	}
-
-	bool enemy_collision = false;
+	
+	enemy_collision = false;
 	for (auto& i : map->getEnemiesList())
 	{
 		i->Update();
@@ -159,6 +167,10 @@ void Game::update()
 			player->setPositionX(checkpoint_x); 
 			player->setPositionY(checkpoint_y);
 			deathCounter++;
+			delete coinCounterText2;
+			delete deathCounterText2;
+			coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
+			deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(deathCounter), { 255,0,0,255 });
 		}
 	}
 
@@ -169,9 +181,6 @@ void Game::update()
 		camera.x = camera.w;
 	if (camera.y > camera.h)
 		camera.y = camera.h;
-
-	coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
-	deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(deathCounter), { 255,0,0,255 });
 };
 
 void Game::render()
@@ -209,7 +218,6 @@ void Game::render()
 
 	coinCounterText->Render(20, 1080 - 100);
 	coinCounterText2->Render(115, 1080 - 100);
-	
 	SDL_RenderPresent(renderer);
 };
 
@@ -218,6 +226,7 @@ void Game::clean()
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
 	SDL_Quit();
+	TTF_Quit();
 }
 
 void Game::changeMap(const char* path)

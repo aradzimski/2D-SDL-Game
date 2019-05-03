@@ -60,16 +60,16 @@ SDL_Texture* Animation::getNextTile()
 	return nextTile;
 }
 
-void Animation::addSprite(std::string path)
+void Animation::addSprite(SDL_Texture* sprite)
 {
-	AnimationSprites.push_back(path);
+	AnimationSprites.push_back(sprite);
 }
 
 SDL_Texture* Animation::getNextSprite()
 {
 	if (delay_counter % (delay) == 0)
 	{
-		nextSprite = TextureManager::LoadTexture(AnimationSprites[sprite_counter].c_str());
+		nextSprite = AnimationSprites[sprite_counter];
 		sprite_counter++;
 	}
 

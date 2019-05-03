@@ -56,7 +56,7 @@ SDL_Rect Checkpoint::getRect()
 
 void Checkpoint::Render()
 {
-	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
+	drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
 
 	if (animated)
 	{

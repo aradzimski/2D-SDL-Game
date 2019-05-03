@@ -32,6 +32,9 @@ private:
 	int map_size_x;
 	int map_size_y;
 	std::vector<class Tile*> CollidingTiles;
+    bool collide;
+	SDL_Rect result;
+	SDL_Rect collidingRect;
 
 	bool movUp;
 	bool movDown;

@@ -6,12 +6,16 @@
 class Text {
 public:
 	Text(const std::string& font_path, int font_size, const std::string& text, const SDL_Color& color);
+	~Text();
 
-	void Render(int x, int y) const;
+	void Render(int x, int y);
 
-	static SDL_Texture* loadFont(const std::string& font_path, int font_size, const std::string& text, const SDL_Color& color);
+	SDL_Texture* loadFont(const std::string& font_path, int font_size, const std::string& text, const SDL_Color& color);
 
 private:
+	TTF_Font* font;
 	SDL_Texture* _text_texture = nullptr;
-	mutable SDL_Rect textRect;
+	SDL_Rect textRect;
+	SDL_Surface* text_surface;
+	SDL_Texture* text_texture;
 };

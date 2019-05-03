@@ -38,6 +38,7 @@ private:
 
 	SDL_Rect src, dest, drawingRect;
 	Tileset* tileset;
+	SDL_Texture* tmpTexture;
 	tinyxml2::XMLDocument doc;
 	std::vector<std::vector<int> > map;
 	std::vector<class Tile*> Tiles;

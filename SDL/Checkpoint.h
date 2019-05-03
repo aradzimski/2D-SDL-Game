@@ -23,6 +23,6 @@ private:
 	bool animated;
 	Animation* animation;
 
-	SDL_Rect srcRect, destRect;
+	SDL_Rect srcRect, destRect, drawingRect;
 	SDL_Texture* oTexture;
 };

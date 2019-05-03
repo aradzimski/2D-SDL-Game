@@ -19,6 +19,6 @@ private:
 	int xpos;
 	int ypos;
 
-	SDL_Rect srcRect, destRect;
+	SDL_Rect srcRect, destRect, drawingRect;
 	SDL_Texture* oTexture;
 };

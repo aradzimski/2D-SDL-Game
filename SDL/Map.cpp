@@ -112,8 +112,9 @@ Map::Map(const char* path)
 			for (tinyxml2::XMLElement* spriteAnimation = child->FirstChildElement("animation"); spriteAnimation; spriteAnimation = spriteAnimation->NextSiblingElement("animation"))
 			{
 				std::string spritename = spriteAnimation->Attribute("sprite");
-				std::string spritepath = "Assets/Sprites/";
-				chkp_anim->addSprite(spritepath + spritename);
+				std::string spritepath = "Assets/Sprites/" + spritename;
+				tmpTexture = TextureManager::LoadTexture(spritepath.c_str());
+				chkp_anim->addSprite(tmpTexture);
 			}
 			Checkpoints.push_back(
 				new Checkpoint(
@@ -181,8 +182,9 @@ Map::Map(const char* path)
 			for (tinyxml2::XMLElement* spriteAnimation = child->FirstChildElement("animation"); spriteAnimation; spriteAnimation = spriteAnimation->NextSiblingElement("animation"))
 			{
 				std::string spritename = spriteAnimation->Attribute("sprite");
-				std::string spritepath = "Assets/Sprites/";
-				coin_anim->addSprite(spritepath + spritename);
+				std::string spritepath = "Assets/Sprites/" + spritename;
+				tmpTexture = TextureManager::LoadTexture(spritepath.c_str());
+				coin_anim->addSprite(tmpTexture);
 			}
 			Coins.push_back(
 				new Coin(

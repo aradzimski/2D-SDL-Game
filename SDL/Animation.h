@@ -12,7 +12,7 @@ public:
 	~Animation();
 
 	void addTile(int tileID);
-	void addSprite(std::string path);
+	void addSprite(SDL_Texture* sprite);
 	int getTile(int tileID);
 	int getTileQuantity();
 	SDL_Texture* getNextTile();
@@ -21,7 +21,7 @@ public:
 private:
 
 	std::vector <int> AnimationTiles;
-	std::vector <std::string> AnimationSprites;
+	std::vector <class SDL_Texture*> AnimationSprites;
 	Tileset* tileset;
 	SDL_Texture* nextTile;
 	SDL_Texture* nextSprite;

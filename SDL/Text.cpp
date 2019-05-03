@@ -6,7 +6,13 @@ Text::Text(const std::string& font_path, int font_size, const std::string& text,
 	SDL_QueryTexture(_text_texture, nullptr, nullptr, &textRect.w, &textRect.h);
 }
 
-void Text::Render(int x, int y) const
+Text::~Text()
+{
+	SDL_DestroyTexture(text_texture);
+	SDL_DestroyTexture(_text_texture);
+}
+
+void Text::Render(int x, int y)
 {
 	textRect.x = x;
 	textRect.y = y;
@@ -15,11 +21,12 @@ void Text::Render(int x, int y) const
 
 SDL_Texture* Text::loadFont(const std::string& font_path, int font_size, const std::string& text, const SDL_Color& color)
 {
-	TTF_Font* font = TTF_OpenFont(font_path.c_str(), font_size);
-	auto text_surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
-	auto text_texture = SDL_CreateTextureFromSurface(Game::renderer, text_surface);
+	font = TTF_OpenFont(font_path.c_str(), font_size);
+	text_surface = TTF_RenderUTF8_Solid(font, text.c_str(), color);
+	text_texture = SDL_CreateTextureFromSurface(Game::renderer, text_surface);
 
 	SDL_FreeSurface(text_surface);
+	TTF_CloseFont(font);
 
 	return text_texture;
 }

@@ -35,6 +35,6 @@ SDL_Rect Gate::getRect()
 
 void Gate::Render()
 {
-	SDL_Rect drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
+	drawingRect = { destRect.x - Game::camera.x, destRect.y - Game::camera.y, destRect.w, destRect.h };
 	SDL_RenderCopy(Game::renderer, oTexture, &srcRect, &drawingRect);
 }

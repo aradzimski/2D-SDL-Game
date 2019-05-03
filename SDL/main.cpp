@@ -24,15 +24,15 @@ int main(int argc, char *argv[])
 		frameStart = SDL_GetTicks();
 		
 		game->handleEvents();
-		game->render();
 		game->update();
+		game->render();
 
-		frameTime = SDL_GetTicks() - frameStart;
+		/*frameTime = SDL_GetTicks() - frameStart;
 
 		if (frameDelay > frameTime)
 		{
 			SDL_Delay(frameDelay - frameTime);
-		}
+		}*/
 	}
 
 	game->clean();

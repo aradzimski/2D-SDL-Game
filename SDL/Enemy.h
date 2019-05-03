@@ -38,6 +38,9 @@ private:
 	int map_size_x;
 	int map_size_y;
 	std::vector<class Tile*> CollidingTiles;
+	SDL_Rect collidingRect;
+	SDL_Rect result;
+	bool collide;
 
 	int velocityFactorX;
 	int velocityFactorY;
