@@ -31,8 +31,12 @@ Tileset::Tileset(std::string spritesheet)
 		}
 		cropY += TILE_SIZE;
 	}
+	SDL_FreeSurface(tempTileSurface);
+	SDL_DestroyTexture(tileTexture);
 }
 
 Tileset::~Tileset()
 {
+	SDL_FreeSurface(tempTileSurface);
+	SDL_DestroyTexture(tileTexture);
 }

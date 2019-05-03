@@ -1,9 +1,31 @@
 #include "Player.h"
 #include "Collision.h"
 
-Player::Player(const char* texturesheet, int x, int y)
+Player::Player(int x, int y)
 {
-	oTexture = TextureManager::LoadTexture(texturesheet);
+	animation = new Animation(4);
+
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_2.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_3.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_4.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_5.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_6.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_7.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_8.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_9.png");
+	animation->addSprite(oTexture);
+	oTexture = TextureManager::LoadTexture("Assets/Sprites/Player_10.png");
+	animation->addSprite(oTexture);
+
 
 	xpos = x;
 	ypos = y;
@@ -19,6 +41,8 @@ Player::Player(const char* texturesheet, int x, int y)
 
 void Player::Update()
 {
+	oTexture = animation->getNextSprite();
+
 	if (Game::event.type == SDL_KEYDOWN)
 	{
 		if (Game::event.key.keysym.sym == SDLK_w)

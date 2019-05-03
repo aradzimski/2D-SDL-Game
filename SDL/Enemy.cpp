@@ -1,12 +1,34 @@
 #include "Enemy.h"
 #include "Collision.h"
 
-Enemy::Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, bool movLeft, bool movRight, int speed)
+Enemy::Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, bool movLeft, bool movRight, int speed, bool animated)
 {
 	oTexture = TextureManager::LoadTexture(texturesheet);
 
 	xpos = x;
 	ypos = y;
+
+	this->animated = animated;
+
+	oSize = 64;
+
+	this->movUp = movUp;
+	this->movDown = movDown;
+	this->movLeft = movLeft;
+	this->movRight = movRight;
+
+	oVelocity = new Velocity(0.6f, 0.91f, speed);
+}
+
+Enemy::Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, bool movLeft, bool movRight, int speed, bool animated, Animation* animation)
+{
+	oTexture = TextureManager::LoadTexture(texturesheet);
+	this->animation = animation;
+
+	xpos = x;
+	ypos = y;
+
+	this->animated = animated;
 
 	oSize = 64;
 
@@ -20,6 +42,11 @@ Enemy::Enemy(const char* texturesheet, int x, int y, bool movUp, bool movDown, b
 
 void Enemy::Update()
 {
+
+	if (animated)
+	{
+		oTexture = animation->getNextSprite();
+	}
 
 	setVelocityFactor();
 	oVelocity->limitSpeed();

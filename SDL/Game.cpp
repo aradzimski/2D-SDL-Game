@@ -39,7 +39,6 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 			printf("TTF_Init: %s\n", TTF_GetError());
 			exit(2);
 		}
-
 		int flags = 0;
 		if (fullscreen == 1)
 		{
@@ -57,7 +56,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 			flags
 		);
 
-		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED /*| SDL_RENDERER_PRESENTVSYNC*/);
+		renderer = SDL_CreateRenderer(window, 2, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 		SDL_SetRenderDrawColor(renderer, 0, 0, 0, 0);
 
 		running = true;
@@ -88,7 +87,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 		i->setCollidingTiles(map->getCollidingTiles());
 	}
 
-	player = new Player("Assets/Sprites/Player.png", map->getStartPosX(), map->getStartPosY());
+	player = new Player(map->getStartPosX(), map->getStartPosY());
 
 	player->setMapSize(map->getSizeX(), map->getSizeY());
 	player->setCollidingTiles(map->getCollidingTiles());
@@ -148,6 +147,7 @@ void Game::update()
 			{
 				i->setActive(false);
 				coinCounter++;
+
 				delete coinCounterText2;
 				delete deathCounterText2;
 				coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
@@ -225,12 +225,14 @@ void Game::clean()
 {
 	SDL_DestroyWindow(window);
 	SDL_DestroyRenderer(renderer);
+	SDL_CloseAudio();
 	SDL_Quit();
 	TTF_Quit();
 }
 
 void Game::changeMap(const char* path)
 {
+	delete map;
 	map = new Map(path);
 
 	// Pierwszy checkpoint
@@ -243,7 +245,7 @@ void Game::changeMap(const char* path)
 		i->setCollidingTiles(map->getCollidingTiles());
 	}
 
-	player = new Player("Assets/Sprites/Player.png", map->getStartPosX(), map->getStartPosY());
+	player = new Player(map->getStartPosX(), map->getStartPosY());
 
 	player->setMapSize(map->getSizeX(), map->getSizeY());
 	player->setCollidingTiles(map->getCollidingTiles());

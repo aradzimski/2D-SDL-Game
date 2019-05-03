@@ -1,22 +1,247 @@
 <map width="80" height="60" startposx="300" startposy="300" nextlevel="level2.map">
  <enemies>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="1792" ypos="256" speed="10" up="false" down="true" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="1856" ypos="960" speed="10" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2624" ypos="256" speed="10" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2688" ypos="1088" speed="10" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2848" ypos="1440" speed="0" up="false" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2912" ypos="1440" speed="0" up="false" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2112" ypos="1728" speed="12" up="false" down="false" left="true" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="1920" ypos="1664" speed="2" up="false" down="true" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2176" ypos="1792" speed="2" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2624" ypos="2176" speed="3" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="2688" ypos="2240" speed="3" up="false" down="true" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4224" ypos="2624" speed="0" up="false" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4480" ypos="2624" speed="0" up="false" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4352" ypos="1984" speed="3" up="false" down="false" left="true" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4352" ypos="1984" speed="3" up="false" down="false" left="false" right="true"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4032" ypos="2304" speed="40" up="true" down="false" left="false" right="false"/>
-  <enemy type="Guard" animation="false" delay="60" sprite="Guard.png" xpos="4672" ypos="2304" speed="40" up="true" down="false" left="false" right="false"/>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="1792" ypos="256" speed="10" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="1856" ypos="960" speed="10" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2624" ypos="256" speed="10" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2688" ypos="1088" speed="10" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2848" ypos="1440" speed="0" up="false" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2912" ypos="1440" speed="0" up="false" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2112" ypos="1728" speed="12" up="false" down="false" left="true" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="1920" ypos="1664" speed="2" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2176" ypos="1792" speed="2" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2624" ypos="2176" speed="3" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2688" ypos="2240" speed="3" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4224" ypos="2624" speed="0" up="false" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4480" ypos="2624" speed="0" up="false" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4352" ypos="1984" speed="3" up="false" down="false" left="true" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4352" ypos="1984" speed="3" up="false" down="false" left="false" right="true">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4032" ypos="2304" speed="40" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4672" ypos="2304" speed="40" up="true" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2752" ypos="3072" speed="0" up="false" down="false" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="2880" ypos="2816" speed="2" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="3392" ypos="2816" speed="4" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="3520" ypos="2816" speed="4" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="4" sprite="Guard.png" xpos="4032" ypos="2816" speed="2" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
  </enemies>
  <checkpoints>
   <checkpoint animation="true" delay="10" sprite="Checkpoint.png" xpos="2368" ypos="608">
@@ -44,6 +269,18 @@
    <animation sprite="Checkpoint_4.png"/>
   </checkpoint>
   <checkpoint animation="true" delay="10" sprite="Checkpoint.png" xpos="4352" ypos="3456">
+   <animation sprite="Checkpoint.png"/>
+   <animation sprite="Checkpoint_2.png"/>
+   <animation sprite="Checkpoint_3.png"/>
+   <animation sprite="Checkpoint_4.png"/>
+  </checkpoint>
+  <checkpoint animation="true" delay="10" sprite="Checkpoint.png" xpos="2208" ypos="2752">
+   <animation sprite="Checkpoint.png"/>
+   <animation sprite="Checkpoint_2.png"/>
+   <animation sprite="Checkpoint_3.png"/>
+   <animation sprite="Checkpoint_4.png"/>
+  </checkpoint>
+  <checkpoint animation="true" delay="10" sprite="Checkpoint.png" xpos="2272" ypos="2752">
    <animation sprite="Checkpoint.png"/>
    <animation sprite="Checkpoint_2.png"/>
    <animation sprite="Checkpoint_3.png"/>
@@ -160,6 +397,126 @@
    <animation sprite="Coin_3.png"/>
    <animation sprite="Coin_2.png"/>
   </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1792" ypos="2176">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1792" ypos="2240">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1856" ypos="2112">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1856" ypos="2176">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1856" ypos="2240">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1856" ypos="2304">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1920" ypos="2048">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1920" ypos="2112">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1920" ypos="2176">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1920" ypos="2240">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1984‬" ypos="2048">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1984‬" ypos="2112">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="1984‬" ypos="2176">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="2048" ypos="2112">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
+  <coin animation="true" delay="5" sprite="Coin.png" xpos="2048" ypos="2176">
+   <animation sprite="Coin.png"/>
+   <animation sprite="Coin_2.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_4.png"/>
+   <animation sprite="Coin_3.png"/>
+   <animation sprite="Coin_2.png"/>
+  </coin>
  </coins>
  <tileset source="castle.png"/>
  <specialtiles>
@@ -215,7 +572,7 @@
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,0,1,1,1,0,7,7,7,7,7,7,7,7,7,</layer>
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
-<layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,8,8,8,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
+<layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,8,8,8,7,7,7,7,6,6,6,7,6,6,6,6,7,6,6,6,6,7,6,6,6,6,7,6,6,6,6,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,8,8,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,6,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>
 <layer>0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,7,7,7,7,7,7,7,7,7,7,7,7,7,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,8,8,8,8,8,7,7,7,7,7,7,7,7,7,</layer>

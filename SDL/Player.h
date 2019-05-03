@@ -3,11 +3,12 @@
 #include "Velocity.h"
 #include "TextureManager.h"
 #include "Tile.h"
+#include "Animation.h"
 
 class Player {
 
 public:
-	Player(const char* texturesheet, int x, int y);
+	Player(int x, int y);
 	~Player();
 
 	void Update();
@@ -44,6 +45,7 @@ private:
 	int velocityFactorX;
 	int velocityFactorY;
 
+	Animation* animation;
 	Velocity* oVelocity;
 	SDL_Texture* oTexture;
 	SDL_Rect srcRect, destRect, drawingRect;

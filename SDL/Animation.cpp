@@ -14,7 +14,6 @@ Animation::Animation(Tileset* tileset, int delay)
 Animation::Animation(int delay)
 {
     std::vector <std::string> AnimationSprites;
-
 	this->delay = delay;
 
 	delay_counter = 0;

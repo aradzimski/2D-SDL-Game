@@ -26,7 +26,7 @@ private:
 	SDL_Texture* nextTile;
 	SDL_Texture* nextSprite;
 
-	int delay;
+	int delay = 1;
 	int delay_counter;
 	int tile_counter;
 	int sprite_counter;

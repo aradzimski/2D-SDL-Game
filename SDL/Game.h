@@ -2,6 +2,7 @@
 
 #include <SDL.h>
 #include <SDL_image.h>
+#include <SDL_audio.h>
 #include <iostream>
 
 class Game
@@ -37,6 +38,5 @@ private:
 
 	int checkpoint_x = 0;
 	int checkpoint_y = 0;
-
 };
 

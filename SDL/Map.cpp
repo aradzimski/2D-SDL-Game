@@ -66,12 +66,29 @@ Map::Map(const char* path)
 		if (en_animation)
 		{
 			int en_animationDelay = child->IntAttribute("delay");
-			Animation* en_anim = new Animation(tileset, animationDelay);
+			Animation* en_anim = new Animation(en_animationDelay);
 
-			for (tinyxml2::XMLElement* tileAnimation = child->FirstChildElement("animation"); tileAnimation; tileAnimation = tileAnimation->NextSiblingElement("animation"))
+			for (tinyxml2::XMLElement* spriteAnimation = child->FirstChildElement("animation"); spriteAnimation; spriteAnimation = spriteAnimation->NextSiblingElement("animation"))
 			{
-				// animacja do napisania
+				std::string spritename = spriteAnimation->Attribute("sprite");
+				std::string spritepath = "Assets/Sprites/Enemies/" + en_type + "/" + spritename;
+				tmpTexture = TextureManager::LoadTexture(spritepath.c_str());
+				en_anim->addSprite(tmpTexture);
 			}
+			Enemies.push_back(
+				new Enemy(
+				(en_sprite_location + en_sprite).c_str(),
+					en_xpos,
+					en_ypos,
+					en_movUp,
+					en_movDown,
+					en_movRight,
+					en_movLeft,
+					en_speed,
+					en_animation,
+					en_anim
+				)
+			);
 		}
 		else
 		{
@@ -84,7 +101,8 @@ Map::Map(const char* path)
 					en_movDown, 
 					en_movRight, 
 					en_movLeft, 
-					en_speed
+					en_speed,
+					en_animation
 				)
 			);
 		}
@@ -287,6 +305,11 @@ Map::Map(const char* path)
 			}
 		}
 	}
+}
+
+Map::~Map()
+{
+	SDL_DestroyTexture(tmpTexture);
 }
 
 void Map::DrawMap()
