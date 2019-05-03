@@ -234,6 +234,7 @@ Map::Map(const char* path)
 	int pointer = 0;
 	bool commaseparator = false;
 	char* layer;
+	std::string tmpStr;
 	tinyxml2::XMLElement* layerElement = doc.FirstChildElement("map")->FirstChildElement("layer");
 	for (int y = 0; y < size_y; y++)
 	{
@@ -241,19 +242,20 @@ Map::Map(const char* path)
 		pointer = 0;
 		for (int x = 0; x < size_x; x++)
 		{
-			int value = 0;
+			std::string value = "";
 			commaseparator = false;
 			while (!commaseparator)
 			{
 				if (layer[pointer] == 44)
 				{
-					map[y][x] = value;
+					map[y][x] = std::stoi(value);
 					commaseparator = true;
 					pointer++;
 				}
 				else
 				{
-					value += layer[pointer] - 48; // konwersja char na int
+					tmpStr = layer[pointer];
+					value = value + tmpStr;
 					pointer++;
 				}
 			}

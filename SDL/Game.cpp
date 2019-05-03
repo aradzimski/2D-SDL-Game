@@ -75,7 +75,7 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 	coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, "0", { 255,255,0,255 });
 	coinCounter = 0;
 
-	map = new Map("Assets/Maps/level1.map");
+	map = new Map("Assets/Maps/level2.map");
 
 	// Pierwszy checkpoint
 	checkpoint_x = map->getStartPosX();
