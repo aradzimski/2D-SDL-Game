@@ -27,6 +27,11 @@ Map::Map(const char* path)
 		.FirstChildElement("map")
 		->Attribute("nextlevel");
 
+	// Sprawdzamy czy to ostatnia mapa
+	lastmap = doc
+		.FirstChildElement("map")
+		->BoolAttribute("lastmap");
+
 	// Tileset
 	std::string tilesetname = (char*)doc
 		.FirstChildElement("map")
@@ -365,6 +370,11 @@ int Map::getStartPosX()
 int Map::getStartPosY()
 {
 	return startposy;
+}
+
+bool Map::checkLastMap()
+{
+	return lastmap;
 }
 
 std::string Map::getNextLevel()

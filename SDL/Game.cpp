@@ -12,6 +12,8 @@ Text* deathCounterText;
 Text* deathCounterText2;
 Text* coinCounterText;
 Text* coinCounterText2;
+Text* youWin;
+Text* pressSpace;
 Map* map;
 SDL_Rect Game::camera = { 0, 0, 12800, 12800};
 
@@ -67,13 +69,12 @@ void Game::initialize(const char* title, float pos_x, float pos_y, int width, in
 		running = false;
 	}
 
-	deathCounterText =  new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
-	deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, "0", { 255,0,0,255 });
 	deathCounter = 0;
-
-	coinCounterText = new Text("Assets/Fonts/font.ttf", 32, "Coins: ", { 255,255,0,255 });
-	coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, "0", { 255,255,0,255 });
 	coinCounter = 0;
+	deathCounterText = new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
+	deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(deathCounter), { 255,0,0,255 });
+	coinCounterText = new Text("Assets/Fonts/font.ttf", 32, "Coins: ", { 255,255,0,255 });
+	coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
 
 	map = new Map("Assets/Maps/level1.map");
 
@@ -131,7 +132,60 @@ void Game::update()
 
 		if (gate_collision)
 		{
-			this->changeMap(map->getNextLevel().c_str());
+			if (map->checkLastMap())
+			{
+				delete youWin;
+				delete pressSpace;
+
+				youWin = new Text("Assets/Fonts/font.ttf", 256, "YOU WIN!", { 0,255,0,255 });
+				pressSpace = new Text("Assets/Fonts/font.ttf", 96, "Press space to load new game", { 0,255,0,255 });
+
+				
+				youWin->Render(350, (1080 / 2) - 256);
+				pressSpace->Render(315, (1080 / 2) + 32);
+
+				SDL_RenderPresent(renderer);
+				
+				gameend = true;
+				delete player;
+				while (gameend)
+				{
+					SDL_PollEvent(&event);
+					if (Game::event.type == SDL_KEYDOWN && Game::event.key.keysym.sym == SDLK_SPACE) {
+						this->changeMap("Assets/Maps/level1.map");
+						gameend = false;
+
+						delete coinCounterText;
+						delete deathCounterText;
+						delete coinCounterText2;
+						delete deathCounterText2;
+
+						deathCounter = 0;
+						coinCounter = 0;
+
+						deathCounterText = new Text("Assets/Fonts/font.ttf", 32, "Deaths: ", { 255,0,0,255 });
+						deathCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(deathCounter), { 255,0,0,255 });
+						coinCounterText = new Text("Assets/Fonts/font.ttf", 32, "Coins: ", { 255,255,0,255 });
+						coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });
+					}
+					switch (event.type) {
+					case SDL_QUIT:
+						gameend = false;
+						running = false;
+						break;
+					default:
+						break;
+					}
+					if (Game::event.type == SDL_KEYDOWN && Game::event.key.keysym.sym == SDLK_ESCAPE) {
+						gameend = false;
+						running = false;
+					}
+				}
+			}
+			else
+			{
+				this->changeMap(map->getNextLevel().c_str());
+			}
 		}
 	}
 

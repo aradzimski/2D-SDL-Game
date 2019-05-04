@@ -31,6 +31,8 @@ private:
 	SDL_Window *window;
 
 	bool running;
+	bool gameend;
+
 	int cnt = 0;
 	
 	int deathCounter = 0;

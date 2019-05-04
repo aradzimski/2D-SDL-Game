@@ -1,4 +1,4 @@
-<map width="90" height="90" startposx="5632" startposy="2560" nextlevel="level3.map">
+<map width="90" height="90" startposx="5632" startposy="2560" nextlevel="level3.map" lastmap="true">
  <enemies>
  </enemies>
  <checkpoints>

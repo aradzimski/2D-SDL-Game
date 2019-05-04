@@ -27,12 +27,16 @@ public:
 	int getStartPosX();
 	int getStartPosY();
 
+	bool checkLastMap();
+
 	std::string getNextLevel();
 
 private:
 
 	int startposx;
 	int startposy;
+
+	bool lastmap;
 
 	std::string nextlevel;
 
