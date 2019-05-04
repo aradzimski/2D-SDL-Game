@@ -167,6 +167,16 @@ void Game::update()
 			player->setPositionX(checkpoint_x); 
 			player->setPositionY(checkpoint_y);
 			deathCounter++;
+			// Zabieramy 5 punktów (monet)
+			if (coinCounter >= 5)
+			{
+				coinCounter -= 5;
+			}
+			else 
+			{
+				coinCounter = 0;
+			}
+
 			delete coinCounterText2;
 			delete deathCounterText2;
 			coinCounterText2 = new Text("Assets/Fonts/font.ttf", 32, std::to_string(coinCounter), { 255,255,0,255 });

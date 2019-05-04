@@ -16,8 +16,8 @@ int main(int argc, char *argv[])
 
 	game = new Game();
 
-	game->initialize("Smieszna gierka", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 2);
-
+	game->initialize("Gra Adriana", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 2);
+	SDL_ShowCursor(0); // ukrywamy kursor
 
 	while (game->isRunning()) 
 	{
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 			SDL_Delay(frameDelay - frameTime);
 		}
 	}
-
+	SDL_ShowCursor(1);
 	game->clean();
 
 	return EXIT_SUCCESS;
