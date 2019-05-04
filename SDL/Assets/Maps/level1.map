@@ -1,4 +1,4 @@
-<map width="80" height="60" startposx="300" startposy="300" nextlevel="level2.map">
+<map width="80" height="60" startposx="300" startposy="300" nextlevel="level2.map" lastmap="true">
  <enemies>
   <enemy type="Guard" animation="true" delay="6" sprite="Guard.png" xpos="1792" ypos="256" speed="10" up="false" down="true" left="false" right="false">
    <animation sprite="Guard.png"/>

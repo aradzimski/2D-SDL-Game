@@ -39,6 +39,10 @@ Player::Player(int x, int y)
 	oVelocity = new Velocity(0.6f, 0.91f, 7);
 }
 
+Player::~Player()
+{
+}
+
 void Player::Update()
 {
 	oTexture = animation->getNextSprite();
