@@ -4,6 +4,8 @@
  <checkpoints>
  </checkpoints>
  <gates>
+  <gate sprite="Gate.png" xpos="5440" ypos="2496"/>
+  <gate sprite="Gate.png" xpos="5440" ypos="2560"/>
  </gates>
  <coins>
  </coins>

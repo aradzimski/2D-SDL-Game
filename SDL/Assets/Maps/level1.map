@@ -1,4 +1,4 @@
-<map width="80" height="60" startposx="300" startposy="300" nextlevel="level2.map" lastmap="true">
+<map width="80" height="60" startposx="300" startposy="300" nextlevel="level2.map" lastmap="false">
  <enemies>
   <enemy type="Guard" animation="true" delay="6" sprite="Guard.png" xpos="1792" ypos="256" speed="10" up="false" down="true" left="false" right="false">
    <animation sprite="Guard.png"/>
@@ -232,6 +232,28 @@
    <animation sprite="Guard_4.png"/>
   </enemy>
   <enemy type="Guard" animation="true" delay="6" sprite="Guard.png" xpos="4032" ypos="2816" speed="2" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="6" sprite="Guard.png" xpos="2880" ypos="3200" speed="17" up="false" down="true" left="false" right="false">
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard_3.png"/>
+   <animation sprite="Guard_2.png"/>
+   <animation sprite="Guard.png"/>
+   <animation sprite="Guard_4.png"/>
+   <animation sprite="Guard_5.png"/>
+   <animation sprite="Guard_4.png"/>
+  </enemy>
+  <enemy type="Guard" animation="true" delay="6" sprite="Guard.png" xpos="3008" ypos="3584" speed="17" up="true" down="false" left="false" right="false">
    <animation sprite="Guard.png"/>
    <animation sprite="Guard.png"/>
    <animation sprite="Guard_2.png"/>
