@@ -79,11 +79,13 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IncludePath>$(SolutionDir)\SDLLib\SDL2\include;$(SolutionDir)\SDLLib\SDL2_ttf\include;$(SolutionDir)\SDLLib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\SDLLib\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\SDLLib\SDL2\lib\x64;$(SolutionDir)\SDLLib\SDL2_ttf\lib\x64;$(SolutionDir)\SDLLib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <TargetName>2DSDLGame</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SolutionDir)\SDLLib\SDL2\include;$(SolutionDir)\SDLLib\SDL2_ttf\include;$(SolutionDir)\SDLLib\SDL2_image\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)\SDLLib\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\SDLLib\SDL2\lib\x64;$(SolutionDir)\SDLLib\SDL2_ttf\lib\x64;$(SolutionDir)\SDLLib\SDL2_image\lib\x64;$(LibraryPath)</LibraryPath>
+    <TargetName>2DSDLGame</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -106,6 +108,8 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\SDLLib\SDL2\include;$(SolutionDir)\SDLLib\SDL2_ttf\include;$(SolutionDir)\SDLLib\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)\SDLLib\SDL2_ttf\lib\x64;$(SolutionDir)\SDLLib\SDL2_image\lib\x64;$(SolutionDir)\SDLLib\SDL2\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -140,6 +144,8 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <AdditionalIncludeDirectories>$(SolutionDir)\SDLLib\SDL2\include;$(SolutionDir)\SDLLib\SDL2_ttf\include;$(SolutionDir)\SDLLib\SDL2_image\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <LanguageStandard>stdcpp17</LanguageStandard>
+      <LanguageStandard_C>stdc17</LanguageStandard_C>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
