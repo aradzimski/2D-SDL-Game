@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
 
 	game = new Game();
 
-	game->initialize("Gra Adriana", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 2);
+	game->initialize("2D SDL Game", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 1920, 1080, 2);
 	SDL_ShowCursor(0); // ukrywamy kursor
 
 	while (game->isRunning()) 
